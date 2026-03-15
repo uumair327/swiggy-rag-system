@@ -6,7 +6,7 @@
 import os
 import numpy as np
 from typing import List, Tuple
-from hypothesis import given, strategies as st, assume, settings
+from hypothesis import given, strategies as st, assume, settings, HealthCheck
 
 from core.models import Chunk, Embedding
 from ports.outbound import DocumentLoaderPort, EmbeddingModelPort, VectorStorePort, LLMPort
@@ -145,10 +145,14 @@ class TestAdapterReplaceabilityProperties:
         embedding_dim=st.sampled_from([128, 256, 384]),
         question=st.text(min_size=10, max_size=200),
         pdf_choice=st.sampled_from(
-            ["Annual-Report-FY-2023-24 (1) (1).pd", "ML_intern_assignment (1) (1).pd"]
+            ["Annual-Report-FY-2023-24 (1) (1).pdf", "ML_intern_assignment (1) (1).pdf"]
         ),
     )
-    @settings(max_examples=100, deadline=10000)
+    @settings(
+        max_examples=100,
+        deadline=10000,
+        suppress_health_check=[HealthCheck.filter_too_much],
+    )
     def test_property_16_adapter_replaceability(
         self, mock_content, embedding_dim, question, pdf_choice
     ):

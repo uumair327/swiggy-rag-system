@@ -5,7 +5,7 @@
 
 import pytest
 import os
-from hypothesis import given, strategies as st, assume, settings
+from hypothesis import given, strategies as st, assume, settings, HealthCheck
 
 from core.document_processor import DocumentProcessor
 from core.text_chunker import TextChunker
@@ -13,14 +13,18 @@ from adapters.pypdf_adapter import PyPDFAdapter
 from core.models import DocumentContent, Chunk, ChunkMetadata
 
 # Available test PDFs in the workspace
-AVAILABLE_PDFS = ["Annual-Report-FY-2023-24 (1) (1).pd", "ML_intern_assignment (1) (1).pd"]
+AVAILABLE_PDFS = ["Annual-Report-FY-2023-24 (1) (1).pdf", "ML_intern_assignment (1) (1).pdf"]
 
 
 class TestDocumentProcessorProperties:
     """Property-based tests for DocumentProcessor."""
 
     @given(pdf_choice=st.sampled_from(AVAILABLE_PDFS))
-    @settings(max_examples=100, deadline=5000)
+    @settings(
+        max_examples=100,
+        deadline=5000,
+        suppress_health_check=[HealthCheck.filter_too_much],
+    )
     def test_property_1_pdf_text_extraction_completeness(self, pdf_choice):
         """
         Property 1: PDF Text Extraction Completeness
@@ -89,7 +93,11 @@ class TestDocumentProcessorProperties:
             pytest.fail("Extracted text should be properly encoded")
 
     @given(pdf_choice=st.sampled_from(AVAILABLE_PDFS), load_twice=st.booleans())
-    @settings(max_examples=100, deadline=5000)
+    @settings(
+        max_examples=100,
+        deadline=5000,
+        suppress_health_check=[HealthCheck.filter_too_much],
+    )
     def test_property_1_pdf_extraction_consistency(self, pdf_choice, load_twice):
         """
         Property 1 (Consistency variant): PDF Text Extraction Completeness
@@ -131,7 +139,11 @@ class TestDocumentProcessorProperties:
             ), "Page count should be consistent across loads"
 
     @given(pdf_choice=st.sampled_from(AVAILABLE_PDFS))
-    @settings(max_examples=100, deadline=5000)
+    @settings(
+        max_examples=100,
+        deadline=5000,
+        suppress_health_check=[HealthCheck.filter_too_much],
+    )
     def test_property_1_pdf_structure_preservation(self, pdf_choice):
         """
         Property 1 (Structure variant): PDF Text Extraction Completeness

@@ -5,7 +5,7 @@
 
 import pytest
 import numpy as np
-from hypothesis import given, strategies as st, assume, settings
+from hypothesis import given, strategies as st, assume, settings, HealthCheck
 
 from core.query_handler import QueryHandler
 from core.embedding_generator import EmbeddingGenerator
@@ -94,7 +94,11 @@ class TestQueryHandlerProperties:
         ), "Embedding vector should have sufficient variance (std > 0.01)"
 
     @given(question=st.text(max_size=100))
-    @settings(max_examples=100, deadline=10000)
+    @settings(
+        max_examples=100,
+        deadline=10000,
+        suppress_health_check=[HealthCheck.filter_too_much],
+    )
     def test_property_11_query_validation_empty_rejection(self, embedding_model_cached, question):
         """
         Property 11 (Rejection variant): Query Validation

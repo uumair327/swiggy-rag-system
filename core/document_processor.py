@@ -56,7 +56,7 @@ class DocumentProcessor:
                 is_valid=False, error_message=f"Error: Path is not a file: {file_path}"
             )
 
-        if not file_path.lower().endswith(".pd"):
+        if not file_path.lower().endswith(".pdf"):
             logger.error(f"File path validation failed: not a PDF file: {file_path}")
             return ValidationResult(
                 is_valid=False, error_message=f"Error: File is not a PDF: {file_path}"
