@@ -193,8 +193,8 @@ class TextChunker:
                 )
 
         # Track which positions in original text are covered
-        covered_positions = set()
-        duplicate_segments = []
+        covered_positions: set[int] = set()
+        duplicate_segments: list[tuple[int, int]] = []
 
         for chunk in chunks:
             start = chunk.metadata.start_position
@@ -244,5 +244,5 @@ class TextChunker:
         return CoverageResult(
             is_complete=is_complete,
             missing_segments=missing_segments,
-            duplicate_segments=duplicate_segments,
+            duplicate_segments=duplicate_segments,  # type: ignore[arg-type]
         )

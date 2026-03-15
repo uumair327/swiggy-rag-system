@@ -8,6 +8,7 @@ from core.rag_orchestrator import RAGOrchestrator
 from core.document_processor import DocumentProcessor
 from core.text_chunker import TextChunker
 from core.embedding_generator import EmbeddingGenerator
+from ports.outbound import LLMPort
 from core.query_handler import QueryHandler
 from core.context_retriever import ContextRetriever
 from core.answer_generator import AnswerGenerator
@@ -162,6 +163,7 @@ def create_rag_system(
 
         # LLM adapter (choose based on provider)
         logger.info(f"Creating LLM adapter with provider: {config.llm_provider}")
+        llm: LLMPort
         if config.llm_provider == "ollama":
             logger.info(f"Creating Ollama adapter with model: {config.llm_model_name}")
             llm = OllamaAdapter(

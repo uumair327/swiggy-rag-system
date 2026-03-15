@@ -51,7 +51,9 @@ class LangChainLLMAdapter(LLMPort):
         self._temperature = temperature
 
         try:
-            self.llm = ChatOpenAI(api_key=api_key, model_name=model_name, temperature=temperature)
+            self.llm = ChatOpenAI(  # type: ignore[call-arg]
+                api_key=api_key, model_name=model_name, temperature=temperature
+            )
             logger.info(f"Initialized LangChain LLM adapter with model: {model_name}")
         except Exception as e:
             logger.error(f"Failed to initialize LangChain LLM: {e}")
@@ -83,7 +85,7 @@ class LangChainLLMAdapter(LLMPort):
 
             # Generate response
             response = self.llm.invoke(messages)
-            answer = response.content
+            answer = str(response.content)
 
             logger.info(f"Successfully generated answer (length: {len(answer)} chars)")
             return answer

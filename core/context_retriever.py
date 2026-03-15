@@ -1,7 +1,7 @@
 """Context Retriever component for retrieving relevant document chunks."""
 
 import logging
-from typing import List
+from typing import List, Optional
 from core.models import Embedding, RetrievedChunk
 from ports.outbound import VectorStorePort
 
@@ -37,7 +37,10 @@ class ContextRetriever:
         )
 
     def retrieve_context(
-        self, query_embedding: Embedding, top_k: int = None, similarity_threshold: float = None
+        self,
+        query_embedding: Embedding,
+        top_k: Optional[int] = None,
+        similarity_threshold: Optional[float] = None,
     ) -> List[RetrievedChunk]:
         """
         Retrieve relevant document chunks for a query embedding.
