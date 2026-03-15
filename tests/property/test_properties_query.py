@@ -224,21 +224,18 @@ class TestQueryHandlerProperties:
                 embedding.source_text == questions[i]
             ), f"Embedding at index {i} source_text should match input question"
 
-        # 9. Different questions should produce different embeddings
-        # (with high probability for random questions)
-        if len(embeddings) > 1:
-            # Check that not all embeddings are identical
-            first_vector = embeddings[0].vector
-            all_identical = all(
-                np.allclose(embedding.vector, first_vector, atol=1e-6)
-                for embedding in embeddings[1:]
-            )
-            # For random questions, embeddings should differ
-            # (This may occasionally fail for very similar generated questions, but unlikely)
-            if len(set(questions)) > 1:  # Only check if input questions are different
-                assert (
-                    not all_identical
-                ), "Different input questions should produce different embeddings"
+        # 9. Repeated identical questions should produce identical embeddings.
+        # This is deterministic and avoids false assumptions about uniqueness
+        # across different Unicode strings that may tokenize equivalently.
+        vector_by_question = {}
+        for i, question in enumerate(questions):
+            current_vector = embeddings[i].vector
+            if question in vector_by_question:
+                assert np.allclose(
+                    current_vector, vector_by_question[question], atol=1e-6
+                ), "Identical input questions should produce identical embeddings"
+            else:
+                vector_by_question[question] = current_vector
 
 
 class TestContextRetrieverProperties:
