@@ -3,11 +3,10 @@
 **Validates: Requirements 4.1, 4.2, 4.3, 4.4**
 """
 
-import pytest
 import os
 import tempfile
 import numpy as np
-from hypothesis import given, strategies as st, assume, settings
+from hypothesis import given, strategies as st, settings
 
 from adapters.faiss_adapter import FAISSAdapter
 from core.models import Chunk, ChunkMetadata
@@ -59,7 +58,7 @@ class TestVectorStoreProperties:
                 text=f"This is test chunk number {i} with some content.",
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document="test_document.pdf",
+                    source_document="test_document.pd",
                     start_position=i * 100,
                     end_position=(i + 1) * 100,
                 ),
@@ -131,7 +130,7 @@ class TestVectorStoreProperties:
             # 7. Retrieved chunk should have identical content to original
             assert (
                 top_chunk.text == original_chunk.text
-            ), f"Retrieved chunk text should match original chunk text"
+            ), "Retrieved chunk text should match original chunk text"
 
             # 8. Retrieved chunk metadata should match original
             assert (
@@ -184,7 +183,7 @@ class TestVectorStoreProperties:
                 text=f"Unique test chunk {i} with specific content for persistence testing.",
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document=f"test_document_{i % 3}.pdf",
+                    source_document=f"test_document_{i % 3}.pd",
                     start_position=i * 150,
                     end_position=(i + 1) * 150,
                 ),
@@ -272,7 +271,7 @@ class TestVectorStoreProperties:
 
                 # Distance should be very small (embeddings preserved accurately)
                 assert top_distance < 1e-5, (
-                    f"Distance to original embedding should be near 0 after persistence, "
+                    "Distance to original embedding should be near 0 after persistence, "
                     f"got {top_distance} for chunk {i}"
                 )
 
@@ -343,7 +342,7 @@ class TestVectorStoreProperties:
                 text=f"Test chunk {i} with content for top-k retrieval testing.",
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document="test_document.pdf",
+                    source_document="test_document.pd",
                     start_position=i * 100,
                     end_position=(i + 1) * 100,
                 ),
@@ -397,7 +396,7 @@ class TestVectorStoreProperties:
 
             for i in range(len(distances) - 1):
                 assert distances[i] <= distances[i + 1], (
-                    f"Results should be ranked by ascending distance (descending similarity). "
+                    "Results should be ranked by ascending distance (descending similarity). "
                     f"Distance at position {i} ({distances[i]:.4f}) should be <= "
                     f"distance at position {i+1} ({distances[i+1]:.4f})"
                 )
@@ -405,7 +404,7 @@ class TestVectorStoreProperties:
         # 4. All returned chunks should be unique (no duplicates)
         chunk_indices = [chunk.metadata.chunk_index for chunk, _ in results]
         assert len(chunk_indices) == len(set(chunk_indices)), (
-            f"Results should not contain duplicate chunks. " f"Found indices: {chunk_indices}"
+            "Results should not contain duplicate chunks. " f"Found indices: {chunk_indices}"
         )
 
         # 5. All returned chunks should be from the stored chunks

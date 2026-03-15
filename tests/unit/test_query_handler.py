@@ -6,7 +6,7 @@ from unittest.mock import Mock
 
 from core.query_handler import QueryHandler
 from core.embedding_generator import EmbeddingGenerator
-from core.models import Embedding, ValidationResult
+from core.models import Embedding
 
 
 class TestQueryHandler:

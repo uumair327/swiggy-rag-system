@@ -2,7 +2,7 @@
 
 import pytest
 from core.text_chunker import TextChunker
-from core.models import Chunk, ChunkMetadata
+from core.models import Chunk
 
 
 class TestTextChunker:
@@ -16,16 +16,16 @@ class TestTextChunker:
     def test_chunk_text_with_default_parameters(self, chunker):
         """Test chunking with default chunk_size and overlap."""
         text = "A" * 2500  # Text longer than default chunk_size
-        chunks = chunker.chunk_text(text, source_name="test.pdf")
+        chunks = chunker.chunk_text(text, source_name="test.pd")
 
         assert len(chunks) > 1
         assert all(isinstance(chunk, Chunk) for chunk in chunks)
-        assert chunks[0].metadata.source_document == "test.pdf"
+        assert chunks[0].metadata.source_document == "test.pd"
 
     def test_chunk_text_shorter_than_chunk_size(self, chunker):
         """Test that text shorter than chunk_size returns single chunk."""
         text = "Short text."
-        chunks = chunker.chunk_text(text, chunk_size=1000, source_name="test.pdf")
+        chunks = chunker.chunk_text(text, chunk_size=1000, source_name="test.pd")
 
         assert len(chunks) == 1
         assert chunks[0].text == text
@@ -169,11 +169,11 @@ class TestTextChunker:
     def test_chunk_metadata_completeness(self, chunker):
         """Test that all chunks have complete metadata."""
         text = "Test text. " * 150
-        chunks = chunker.chunk_text(text, chunk_size=1000, overlap=200, source_name="doc.pdf")
+        chunks = chunker.chunk_text(text, chunk_size=1000, overlap=200, source_name="doc.pd")
 
         for i, chunk in enumerate(chunks):
             assert chunk.metadata.chunk_index == i
-            assert chunk.metadata.source_document == "doc.pdf"
+            assert chunk.metadata.source_document == "doc.pd"
             assert chunk.metadata.start_position >= 0
             assert chunk.metadata.end_position > chunk.metadata.start_position
             assert chunk.metadata.end_position <= len(text)

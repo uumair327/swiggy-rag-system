@@ -1,7 +1,6 @@
 """Factory function for RAG system initialization with dependency injection."""
 
 import logging
-import os
 from typing import Optional
 
 from core.config import RAGConfig
@@ -24,8 +23,6 @@ logger = logging.getLogger(__name__)
 
 class ConfigurationError(Exception):
     """Raised when required configuration is missing or invalid."""
-
-    pass
 
 
 def validate_configuration(config: RAGConfig) -> None:
@@ -72,13 +69,13 @@ def validate_configuration(config: RAGConfig) -> None:
 
     if not 0.0 <= config.similarity_threshold <= 1.0:
         errors.append(
-            f"Similarity threshold must be between 0.0 and 1.0, "
+            "Similarity threshold must be between 0.0 and 1.0, "
             f"got {config.similarity_threshold}"
         )
 
     if not 0.0 <= config.llm_temperature <= 2.0:
         errors.append(
-            f"LLM temperature must be between 0.0 and 2.0, " f"got {config.llm_temperature}"
+            "LLM temperature must be between 0.0 and 2.0, " f"got {config.llm_temperature}"
         )
 
     # Raise error if any validation failed
@@ -236,7 +233,7 @@ def create_rag_system(
         )
 
         logger.info("RAG system initialized successfully")
-        logger.info(f"Configuration summary:")
+        logger.info("Configuration summary:")
         logger.info(f"  - Embedding model: {config.embedding_model_name}")
         logger.info(f"  - LLM model: {config.llm_model_name}")
         logger.info(f"  - Chunk size: {config.chunk_size}")

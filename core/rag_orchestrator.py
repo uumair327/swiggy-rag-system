@@ -112,7 +112,7 @@ class RAGOrchestrator:
             if not coverage_result.is_complete:
                 logger.warning(
                     f"Chunk coverage validation found {len(coverage_result.missing_segments)} "
-                    f"missing segments"
+                    "missing segments"
                 )
 
             # Step 3: Generate embeddings

@@ -26,7 +26,7 @@ class EmbeddingGenerator:
         """
         self.embedding_model = embedding_model_port
         logger.info(
-            f"EmbeddingGenerator initialized with embedding dimension: "
+            "EmbeddingGenerator initialized with embedding dimension: "
             f"{self.embedding_model.get_embedding_dimension()}"
         )
 

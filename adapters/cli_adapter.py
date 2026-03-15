@@ -49,10 +49,10 @@ class CLIAdapter:
 Examples:
   # Ingest a PDF document
   swiggy-rag ingest path/to/document.pdf
-  
+
   # Ask a question
   swiggy-rag query "What was the revenue in 2023?"
-  
+
   # Load existing index and ask a question
   swiggy-rag query "What was the revenue in 2023?" --load-index path/to/index.faiss
             """,

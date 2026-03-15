@@ -1,18 +1,15 @@
 """Unit tests for all adapter implementations."""
 
 import pytest
-import os
-import tempfile
 import numpy as np
-from unittest.mock import Mock, patch, MagicMock
-from pathlib import Path
+from unittest.mock import Mock, patch
 
 from adapters.pypdf_adapter import PyPDFAdapter
 from adapters.sentence_transformer_adapter import SentenceTransformerAdapter
 from adapters.faiss_adapter import FAISSAdapter
 from adapters.langchain_adapter import LangChainLLMAdapter
 from adapters.cli_adapter import CLIAdapter
-from core.models import Chunk, ChunkMetadata, IngestionResult, QueryResult, Answer, RetrievedChunk
+from core.models import Chunk, ChunkMetadata, IngestionResult, QueryResult, Answer
 from core.rag_orchestrator import RAGOrchestrator
 
 
@@ -26,7 +23,7 @@ class TestPyPDFAdapter:
 
     def test_validate_file_exists(self, adapter, tmp_path):
         """Test file validation for existing PDF."""
-        test_file = tmp_path / "test.pdf"
+        test_file = tmp_path / "test.pd"
         test_file.write_text("PDF content")
 
         result = adapter.validate_file(str(test_file))
@@ -35,7 +32,7 @@ class TestPyPDFAdapter:
 
     def test_validate_file_not_exists(self, adapter):
         """Test file validation for non-existent file."""
-        result = adapter.validate_file("/nonexistent/file.pdf")
+        result = adapter.validate_file("/nonexistent/file.pd")
 
         assert result is False
 
@@ -60,7 +57,7 @@ class TestPyPDFAdapter:
     @patch("adapters.pypdf_adapter.pypdf.PdfReader")
     def test_load_pdf_success(self, mock_reader, adapter, tmp_path):
         """Test successful PDF loading."""
-        test_file = tmp_path / "test.pdf"
+        test_file = tmp_path / "test.pd"
         test_file.write_text("PDF")
 
         # Mock PDF reader
@@ -79,12 +76,12 @@ class TestPyPDFAdapter:
     def test_load_pdf_file_not_found(self, adapter):
         """Test PDF loading with non-existent file."""
         with pytest.raises(FileNotFoundError):
-            adapter.load_pdf("/nonexistent/file.pdf")
+            adapter.load_pdf("/nonexistent/file.pd")
 
     @patch("adapters.pypdf_adapter.pypdf.PdfReader")
     def test_load_pdf_corrupted(self, mock_reader, adapter, tmp_path):
         """Test PDF loading with corrupted file."""
-        test_file = tmp_path / "corrupted.pdf"
+        test_file = tmp_path / "corrupted.pd"
         test_file.write_text("corrupted")
 
         from pypdf.errors import PdfReadError
@@ -99,7 +96,7 @@ class TestPyPDFAdapter:
     @patch("adapters.pypdf_adapter.pypdf.PdfReader")
     def test_load_pdf_empty_content(self, mock_reader, adapter, tmp_path):
         """Test PDF loading with no extractable text."""
-        test_file = tmp_path / "empty.pdf"
+        test_file = tmp_path / "empty.pd"
         test_file.write_text("PDF")
 
         mock_page = Mock()
@@ -189,8 +186,8 @@ class TestFAISSAdapter:
     def sample_chunks(self):
         """Create sample chunks."""
         return [
-            Chunk(text="First chunk", metadata=ChunkMetadata(0, "test.pdf", 0, 11)),
-            Chunk(text="Second chunk", metadata=ChunkMetadata(1, "test.pdf", 10, 22)),
+            Chunk(text="First chunk", metadata=ChunkMetadata(0, "test.pd", 0, 11)),
+            Chunk(text="Second chunk", metadata=ChunkMetadata(1, "test.pd", 10, 22)),
         ]
 
     def test_init_with_dimension(self):
@@ -222,7 +219,7 @@ class TestFAISSAdapter:
     def test_add_embeddings_count_mismatch(self, adapter):
         """Test adding embeddings with mismatched chunk count."""
         embeddings = np.random.rand(2, 384).astype(np.float32)
-        chunks = [Chunk(text="Only one", metadata=ChunkMetadata(0, "test.pdf", 0, 8))]
+        chunks = [Chunk(text="Only one", metadata=ChunkMetadata(0, "test.pd", 0, 8))]
 
         with pytest.raises(ValueError) as exc_info:
             adapter.add_embeddings(embeddings, chunks)
@@ -301,7 +298,7 @@ class TestLangChainLLMAdapter:
         monkeypatch.setenv("OPENAI_API_KEY", "env-api-key")
 
         with patch("adapters.langchain_adapter.ChatOpenAI") as mock_llm:
-            adapter = LangChainLLMAdapter()
+            LangChainLLMAdapter()
 
             mock_llm.assert_called_once()
 
@@ -380,10 +377,10 @@ class TestCLIAdapter:
             success=True, chunks_created=10, embeddings_stored=10, error_message=None
         )
 
-        exit_code = cli.run(["ingest", "test.pdf"])
+        exit_code = cli.run(["ingest", "test.pd"])
 
         assert exit_code == 0
-        mock_orchestrator.ingest_document.assert_called_once_with("test.pdf")
+        mock_orchestrator.ingest_document.assert_called_once_with("test.pd")
 
     def test_ingest_command_failure(self, cli, mock_orchestrator):
         """Test failed ingest command."""
@@ -391,7 +388,7 @@ class TestCLIAdapter:
             success=False, chunks_created=0, embeddings_stored=0, error_message="File not found"
         )
 
-        exit_code = cli.run(["ingest", "missing.pdf"])
+        exit_code = cli.run(["ingest", "missing.pd"])
 
         assert exit_code == 1
 

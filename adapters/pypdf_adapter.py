@@ -3,7 +3,6 @@
 import os
 import logging
 from pathlib import Path
-from typing import Optional
 import pypdf
 from pypdf.errors import PdfReadError
 

@@ -3,10 +3,9 @@
 **Validates: Requirements 8.3, 8.4**
 """
 
-import pytest
 import io
 import sys
-from hypothesis import given, strategies as st, assume, settings
+from hypothesis import given, strategies as st, settings
 
 from adapters.cli_adapter import CLIAdapter
 from core.models import QueryResult, Answer, RetrievedChunk, Chunk, ChunkMetadata
@@ -58,7 +57,7 @@ class TestCLIAdapterProperties:
                 text=chunk_text,
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document=f"test_document_{i % 3}.pdf",
+                    source_document=f"test_document_{i % 3}.pd",
                     start_position=i * 200,
                     end_position=i * 200 + len(chunk_text),
                 ),
@@ -211,7 +210,7 @@ class TestCLIAdapterProperties:
                 text=chunk_text,
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document=f"doc_{i}.pdf",
+                    source_document=f"doc_{i}.pd",
                     start_position=i * 100,
                     end_position=i * 100 + len(chunk_text),
                 ),
@@ -387,7 +386,7 @@ class TestCLIAdapterProperties:
                 text=f"Chunk {i} text content. " * 5,
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document=f"document_{i}.pdf",
+                    source_document=f"document_{i}.pd",
                     start_position=i * 150,
                     end_position=i * 150 + 100,
                 ),

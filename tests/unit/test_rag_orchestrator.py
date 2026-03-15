@@ -2,7 +2,7 @@
 
 import pytest
 import numpy as np
-from unittest.mock import Mock, MagicMock, patch
+from unittest.mock import Mock
 from datetime import datetime
 
 from core.rag_orchestrator import RAGOrchestrator
@@ -19,7 +19,6 @@ from core.models import (
     Embedding,
     RetrievedChunk,
     Answer,
-    IngestionResult,
     QueryResult,
     CoverageResult,
 )
@@ -132,7 +131,7 @@ class TestRAGOrchestrator:
         # Setup mock document content
         document_content = DocumentContent(
             text="This is test document content for ingestion.",
-            source_path="/path/to/test.pdf",
+            source_path="/path/to/test.pd",
             page_count=1,
             extraction_timestamp=datetime.now().isoformat(),
         )
@@ -144,7 +143,7 @@ class TestRAGOrchestrator:
                 text="This is test document",
                 metadata=ChunkMetadata(
                     chunk_index=0,
-                    source_document="/path/to/test.pdf",
+                    source_document="/path/to/test.pd",
                     start_position=0,
                     end_position=21,
                 ),
@@ -153,7 +152,7 @@ class TestRAGOrchestrator:
                 text="document content for ingestion.",
                 metadata=ChunkMetadata(
                     chunk_index=1,
-                    source_document="/path/to/test.pdf",
+                    source_document="/path/to/test.pd",
                     start_position=13,
                     end_position=44,
                 ),
@@ -180,7 +179,7 @@ class TestRAGOrchestrator:
         mock_vector_store.get_index_size.return_value = 2
 
         # Execute ingestion
-        result = orchestrator.ingest_document("/path/to/test.pdf")
+        result = orchestrator.ingest_document("/path/to/test.pd")
 
         # Verify result
         assert result.success is True
@@ -189,7 +188,7 @@ class TestRAGOrchestrator:
         assert result.error_message is None
 
         # Verify all components were called in correct order
-        mock_document_processor.load_document.assert_called_once_with("/path/to/test.pdf")
+        mock_document_processor.load_document.assert_called_once_with("/path/to/test.pd")
         mock_text_chunker.chunk_text.assert_called_once()
         mock_text_chunker.validate_chunk_coverage.assert_called_once()
         mock_embedding_generator.generate_embeddings_batch.assert_called_once()
@@ -222,13 +221,13 @@ class TestRAGOrchestrator:
         # Setup mocks
         document_content = DocumentContent(
             text="Test content",
-            source_path="/test.pdf",
+            source_path="/test.pd",
             page_count=1,
             extraction_timestamp=datetime.now().isoformat(),
         )
         mock_document_processor.load_document.return_value = document_content
 
-        chunks = [Chunk(text="Test content", metadata=ChunkMetadata(0, "/test.pdf", 0, 12))]
+        chunks = [Chunk(text="Test content", metadata=ChunkMetadata(0, "/test.pd", 0, 12))]
         mock_text_chunker.chunk_text.return_value = chunks
         mock_text_chunker.validate_chunk_coverage.return_value = CoverageResult(True, [], [])
 
@@ -237,7 +236,7 @@ class TestRAGOrchestrator:
         mock_vector_store.get_index_size.return_value = 1
 
         # Execute
-        result = orchestrator.ingest_document("/test.pdf")
+        result = orchestrator.ingest_document("/test.pd")
 
         # Verify save_index was NOT called
         mock_vector_store.save_index.assert_not_called()
@@ -247,11 +246,11 @@ class TestRAGOrchestrator:
         """Test ingestion handles FileNotFoundError gracefully."""
         # Setup mock to raise FileNotFoundError
         mock_document_processor.load_document.side_effect = FileNotFoundError(
-            "PDF file not found at path: /nonexistent.pdf"
+            "PDF file not found at path: /nonexistent.pd"
         )
 
         # Execute ingestion
-        result = orchestrator.ingest_document("/nonexistent.pdf")
+        result = orchestrator.ingest_document("/nonexistent.pd")
 
         # Verify error handling
         assert result.success is False
@@ -267,7 +266,7 @@ class TestRAGOrchestrator:
         )
 
         # Execute ingestion
-        result = orchestrator.ingest_document("/corrupted.pdf")
+        result = orchestrator.ingest_document("/corrupted.pd")
 
         # Verify error handling
         assert result.success is False
@@ -281,7 +280,7 @@ class TestRAGOrchestrator:
         mock_document_processor.load_document.side_effect = RuntimeError("Unexpected system error")
 
         # Execute ingestion
-        result = orchestrator.ingest_document("/test.pdf")
+        result = orchestrator.ingest_document("/test.pd")
 
         # Verify error handling
         assert result.success is False
@@ -314,14 +313,14 @@ class TestRAGOrchestrator:
             RetrievedChunk(
                 chunk=Chunk(
                     text="The revenue for 2023 was $100M.",
-                    metadata=ChunkMetadata(0, "report.pdf", 0, 32),
+                    metadata=ChunkMetadata(0, "report.pd", 0, 32),
                 ),
                 similarity_score=0.85,
             ),
             RetrievedChunk(
                 chunk=Chunk(
                     text="Revenue increased by 20% year over year.",
-                    metadata=ChunkMetadata(1, "report.pdf", 33, 74),
+                    metadata=ChunkMetadata(1, "report.pd", 33, 74),
                 ),
                 similarity_score=0.72,
             ),
@@ -535,7 +534,7 @@ class TestRAGOrchestrator:
         """Test that errors from DocumentProcessor are properly propagated."""
         mock_document_processor.load_document.side_effect = FileNotFoundError("File not found")
 
-        result = orchestrator.ingest_document("/test.pdf")
+        result = orchestrator.ingest_document("/test.pd")
 
         assert result.success is False
         assert "not found" in result.error_message.lower()
@@ -546,14 +545,14 @@ class TestRAGOrchestrator:
         """Test that errors from TextChunker are properly propagated."""
         document_content = DocumentContent(
             text="Test",
-            source_path="/test.pdf",
+            source_path="/test.pd",
             page_count=1,
             extraction_timestamp=datetime.now().isoformat(),
         )
         mock_document_processor.load_document.return_value = document_content
         mock_text_chunker.chunk_text.side_effect = ValueError("Chunking error")
 
-        result = orchestrator.ingest_document("/test.pdf")
+        result = orchestrator.ingest_document("/test.pd")
 
         assert result.success is False
         assert "Chunking error" in result.error_message
@@ -564,13 +563,13 @@ class TestRAGOrchestrator:
         """Test that errors from EmbeddingGenerator are properly propagated."""
         document_content = DocumentContent(
             text="Test",
-            source_path="/test.pdf",
+            source_path="/test.pd",
             page_count=1,
             extraction_timestamp=datetime.now().isoformat(),
         )
         mock_document_processor.load_document.return_value = document_content
 
-        chunks = [Chunk(text="Test", metadata=ChunkMetadata(0, "/test.pdf", 0, 4))]
+        chunks = [Chunk(text="Test", metadata=ChunkMetadata(0, "/test.pd", 0, 4))]
         mock_text_chunker.chunk_text.return_value = chunks
         mock_text_chunker.validate_chunk_coverage.return_value = CoverageResult(True, [], [])
 
@@ -578,7 +577,7 @@ class TestRAGOrchestrator:
             "Embedding model error"
         )
 
-        result = orchestrator.ingest_document("/test.pdf")
+        result = orchestrator.ingest_document("/test.pd")
 
         assert result.success is False
         assert "Unexpected error" in result.error_message
@@ -594,13 +593,13 @@ class TestRAGOrchestrator:
         """Test that errors from VectorStore are properly propagated."""
         document_content = DocumentContent(
             text="Test",
-            source_path="/test.pdf",
+            source_path="/test.pd",
             page_count=1,
             extraction_timestamp=datetime.now().isoformat(),
         )
         mock_document_processor.load_document.return_value = document_content
 
-        chunks = [Chunk(text="Test", metadata=ChunkMetadata(0, "/test.pdf", 0, 4))]
+        chunks = [Chunk(text="Test", metadata=ChunkMetadata(0, "/test.pd", 0, 4))]
         mock_text_chunker.chunk_text.return_value = chunks
         mock_text_chunker.validate_chunk_coverage.return_value = CoverageResult(True, [], [])
 
@@ -609,7 +608,7 @@ class TestRAGOrchestrator:
 
         mock_vector_store.add_embeddings.side_effect = RuntimeError("Storage error")
 
-        result = orchestrator.ingest_document("/test.pdf")
+        result = orchestrator.ingest_document("/test.pd")
 
         assert result.success is False
         assert "Unexpected error" in result.error_message
@@ -658,7 +657,7 @@ class TestRAGOrchestrator:
 
         retrieved_chunks = [
             RetrievedChunk(
-                chunk=Chunk(text="Test", metadata=ChunkMetadata(0, "test.pdf", 0, 4)),
+                chunk=Chunk(text="Test", metadata=ChunkMetadata(0, "test.pd", 0, 4)),
                 similarity_score=0.8,
             )
         ]

@@ -32,7 +32,7 @@ class SentenceTransformerAdapter(EmbeddingModelPort):
         self.model = SentenceTransformer(model_name)
         self._embedding_dimension = self.model.get_sentence_embedding_dimension()
         logger.info(
-            f"SentenceTransformerAdapter: Model loaded successfully, "
+            "SentenceTransformerAdapter: Model loaded successfully, "
             f"embedding dimension: {self._embedding_dimension}"
         )
 

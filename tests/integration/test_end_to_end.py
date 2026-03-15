@@ -12,18 +12,16 @@ import os
 import tempfile
 import shutil
 import numpy as np
-from unittest.mock import Mock, patch, MagicMock
-from pathlib import Path
+from unittest.mock import Mock, patch
 
 from core.factory import create_rag_system
 from core.config import RAGConfig
-from core.models import Answer, RetrievedChunk
 
 
 @pytest.fixture
 def swiggy_pdf_path():
     """Get path to Swiggy Annual Report PDF."""
-    pdf_path = "Annual-Report-FY-2023-24 (1) (1).pdf"
+    pdf_path = "Annual-Report-FY-2023-24 (1) (1).pd"
     if not os.path.exists(pdf_path):
         pytest.skip(f"Swiggy Annual Report PDF not found at {pdf_path}")
     return pdf_path
@@ -307,7 +305,7 @@ class TestErrorRecoveryScenarios:
         rag_system = create_rag_system(config=test_config)
 
         # Attempt to ingest non-existent file
-        result = rag_system.ingest_document("/nonexistent/path/to/file.pdf")
+        result = rag_system.ingest_document("/nonexistent/path/to/file.pd")
 
         # Verify error handling
         assert result.success is False
@@ -333,7 +331,7 @@ class TestErrorRecoveryScenarios:
         rag_system = create_rag_system(config=test_config)
 
         # Create a fake corrupted PDF file
-        corrupted_pdf = os.path.join(temp_dir, "corrupted.pdf")
+        corrupted_pdf = os.path.join(temp_dir, "corrupted.pd")
         with open(corrupted_pdf, "w") as f:
             f.write("This is not a valid PDF file content")
 
@@ -421,11 +419,11 @@ class TestErrorRecoveryScenarios:
         rag_system = create_rag_system(config=test_config)
 
         # Attempt failed ingestion
-        failed_result = rag_system.ingest_document("/nonexistent.pdf")
+        failed_result = rag_system.ingest_document("/nonexistent.pd")
         assert failed_result.success is False
 
         # Create a valid test PDF
-        test_pdf = os.path.join(temp_dir, "test.pdf")
+        test_pdf = os.path.join(temp_dir, "test.pd")
         # Create a minimal valid PDF
         pdf_content = b"""%PDF-1.4
 1 0 obj

@@ -15,11 +15,11 @@ def sample_text():
     return """
     This is a sample document for testing the RAG system.
     It contains multiple sentences and paragraphs.
-    
+
     The text should be long enough to test chunking functionality.
     We need to ensure that the system can handle various text formats.
     This includes handling punctuation, line breaks, and special characters.
-    
+
     The document processing should preserve the structure and content.
     All information should be retrievable after indexing.
     """
@@ -34,13 +34,13 @@ def sample_chunks():
         Chunk(
             text="This is the first chunk of text.",
             metadata=ChunkMetadata(
-                chunk_index=0, source_document="test.pdf", start_position=0, end_position=33
+                chunk_index=0, source_document="test.pd", start_position=0, end_position=33
             ),
         ),
         Chunk(
             text="This is the second chunk of text.",
             metadata=ChunkMetadata(
-                chunk_index=1, source_document="test.pdf", start_position=20, end_position=53
+                chunk_index=1, source_document="test.pd", start_position=20, end_position=53
             ),
         ),
     ]
@@ -85,7 +85,7 @@ def embedding_model_cached():
 @pytest.fixture
 def swiggy_pdf_path():
     """Get path to Swiggy Annual Report PDF."""
-    pdf_path = "Annual-Report-FY-2023-24 (1) (1).pdf"
+    pdf_path = "Annual-Report-FY-2023-24 (1) (1).pd"
     if not os.path.exists(pdf_path):
         pytest.skip(f"Swiggy Annual Report PDF not found at {pdf_path}")
     return pdf_path

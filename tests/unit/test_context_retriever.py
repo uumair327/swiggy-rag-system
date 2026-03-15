@@ -29,9 +29,9 @@ class TestContextRetriever:
     def sample_chunks(self):
         """Create sample chunks for testing."""
         return [
-            Chunk(text="First chunk text", metadata=ChunkMetadata(0, "test.pdf", 0, 16)),
-            Chunk(text="Second chunk text", metadata=ChunkMetadata(1, "test.pdf", 10, 27)),
-            Chunk(text="Third chunk text", metadata=ChunkMetadata(2, "test.pdf", 20, 36)),
+            Chunk(text="First chunk text", metadata=ChunkMetadata(0, "test.pd", 0, 16)),
+            Chunk(text="Second chunk text", metadata=ChunkMetadata(1, "test.pd", 10, 27)),
+            Chunk(text="Third chunk text", metadata=ChunkMetadata(2, "test.pd", 20, 36)),
         ]
 
     def test_init_with_defaults(self, mock_vector_store):
@@ -133,7 +133,7 @@ class TestContextRetriever:
 
         # Check complete metadata
         assert retrieved.chunk.metadata.chunk_index == 0
-        assert retrieved.chunk.metadata.source_document == "test.pdf"
+        assert retrieved.chunk.metadata.source_document == "test.pd"
         assert retrieved.chunk.metadata.start_position == 0
         assert retrieved.chunk.metadata.end_position == 16
 

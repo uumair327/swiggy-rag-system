@@ -3,16 +3,12 @@
 **Validates: Requirements 9.4, 9.5, 9.6, 10.1, 10.2, 10.3, 10.5**
 """
 
-import pytest
 import os
-import tempfile
 import numpy as np
 from typing import List, Tuple
 from hypothesis import given, strategies as st, assume, settings
 
-from core.factory import create_rag_system
-from core.config import RAGConfig
-from core.models import Chunk, ChunkMetadata, Embedding
+from core.models import Chunk, Embedding
 from ports.outbound import DocumentLoaderPort, EmbeddingModelPort, VectorStorePort, LLMPort
 
 # ============================================================================
@@ -105,11 +101,9 @@ class MockVectorStore(VectorStorePort):
 
     def save_index(self, file_path: str) -> None:
         """Mock save - does nothing."""
-        pass
 
     def load_index(self, file_path: str) -> None:
         """Mock load - does nothing."""
-        pass
 
     def get_index_size(self) -> int:
         """Return number of stored embeddings."""
@@ -151,7 +145,7 @@ class TestAdapterReplaceabilityProperties:
         embedding_dim=st.sampled_from([128, 256, 384]),
         question=st.text(min_size=10, max_size=200),
         pdf_choice=st.sampled_from(
-            ["Annual-Report-FY-2023-24 (1) (1).pdf", "ML_intern_assignment (1) (1).pdf"]
+            ["Annual-Report-FY-2023-24 (1) (1).pd", "ML_intern_assignment (1) (1).pd"]
         ),
     )
     @settings(max_examples=100, deadline=10000)
@@ -485,7 +479,7 @@ class TestAdapterReplaceabilityProperties:
                 text=f"Test chunk {i}",
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document="test.pdf",
+                    source_document="test.pd",
                     start_position=i * 100,
                     end_position=(i + 1) * 100,
                 ),
@@ -549,7 +543,7 @@ class TestAdapterReplaceabilityProperties:
                     text="Test context for answer generation",
                     metadata=ChunkMetadata(
                         chunk_index=0,
-                        source_document="test.pdf",
+                        source_document="test.pd",
                         start_position=0,
                         end_position=100,
                     ),

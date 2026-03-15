@@ -72,7 +72,7 @@ class QueryHandler:
             logger.info(f"Processing question: {question[:100]}...")
             embedding = self.embedding_generator.generate_embedding(question)
             logger.info(
-                f"Query embedding generated successfully " f"(dimension: {embedding.dimension})"
+                "Query embedding generated successfully " f"(dimension: {embedding.dimension})"
             )
             return embedding
         except Exception as e:

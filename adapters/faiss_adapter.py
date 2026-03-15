@@ -73,7 +73,7 @@ class FAISSAdapter(VectorStorePort):
         self.chunks.extend(chunks)
 
         logger.info(
-            f"FAISSAdapter: Successfully added embeddings, "
+            "FAISSAdapter: Successfully added embeddings, "
             f"total index size: {self.get_index_size()}"
         )
 

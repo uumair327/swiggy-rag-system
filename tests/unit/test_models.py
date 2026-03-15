@@ -1,18 +1,13 @@
 """Unit tests for core domain models."""
 
-import pytest
 import numpy as np
 from core.models import (
     DocumentContent,
     ChunkMetadata,
     Chunk,
     Embedding,
-    RetrievedChunk,
     Answer,
-    IngestionResult,
-    QueryResult,
     ValidationResult,
-    CoverageResult,
 )
 
 
@@ -23,13 +18,13 @@ class TestDocumentContent:
         """Test creating a DocumentContent instance."""
         doc = DocumentContent(
             text="Sample text",
-            source_path="/path/to/doc.pdf",
+            source_path="/path/to/doc.pd",
             page_count=10,
             extraction_timestamp="2024-01-15T10:30:00",
         )
 
         assert doc.text == "Sample text"
-        assert doc.source_path == "/path/to/doc.pdf"
+        assert doc.source_path == "/path/to/doc.pd"
         assert doc.page_count == 10
         assert doc.extraction_timestamp == "2024-01-15T10:30:00"
 
@@ -40,14 +35,14 @@ class TestChunk:
     def test_create_chunk_with_metadata(self):
         """Test creating a Chunk with metadata."""
         metadata = ChunkMetadata(
-            chunk_index=0, source_document="test.pdf", start_position=0, end_position=100
+            chunk_index=0, source_document="test.pd", start_position=0, end_position=100
         )
 
         chunk = Chunk(text="This is a test chunk.", metadata=metadata)
 
         assert chunk.text == "This is a test chunk."
         assert chunk.metadata.chunk_index == 0
-        assert chunk.metadata.source_document == "test.pdf"
+        assert chunk.metadata.source_document == "test.pd"
         assert chunk.metadata.start_position == 0
         assert chunk.metadata.end_position == 100
 

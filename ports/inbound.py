@@ -21,7 +21,6 @@ class RAGServicePort(ABC):
         Returns:
             IngestionResult containing success status and statistics
         """
-        pass
 
     @abstractmethod
     def ask_question(self, question: str) -> "Answer":
@@ -34,4 +33,3 @@ class RAGServicePort(ABC):
         Returns:
             Answer with text, supporting chunks, and confidence level
         """
-        pass

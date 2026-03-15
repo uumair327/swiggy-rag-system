@@ -40,7 +40,7 @@ class TextChunker:
 
         # Handle text shorter than chunk_size
         if len(text) <= chunk_size:
-            logger.info(f"Text shorter than chunk_size, creating single chunk")
+            logger.info("Text shorter than chunk_size, creating single chunk")
             metadata = ChunkMetadata(
                 chunk_index=0, source_document=source_name, start_position=0, end_position=len(text)
             )
@@ -112,7 +112,7 @@ class TextChunker:
                     text=text[chunks[-1].metadata.start_position : len(text)],
                     metadata=chunks[-1].metadata,
                 )
-                logger.debug(f"Extended last chunk to include remaining text")
+                logger.debug("Extended last chunk to include remaining text")
                 break
 
         logger.info(f"Chunking complete: created {len(chunks)} chunks from {source_name}")
@@ -133,7 +133,6 @@ class TextChunker:
         Returns:
             Extended chunk text
         """
-        chunk_text = text[start_pos:end_pos]
         search_limit = min(start_pos + max_extension, len(text))
 
         # Look for sentence boundaries (period, newline, exclamation, question mark)
@@ -187,7 +186,7 @@ class TextChunker:
             else:
                 logger.warning(
                     f"Coverage validation failed: text has {len(original_text)} chars "
-                    f"but no chunks created"
+                    "but no chunks created"
                 )
                 return CoverageResult(
                     is_complete=False, missing_segments=[original_text], duplicate_segments=[]

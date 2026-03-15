@@ -26,7 +26,6 @@ class DocumentLoaderPort(ABC):
             FileNotFoundError: If the file does not exist
             ValueError: If the file is corrupted or cannot be read
         """
-        pass
 
     @abstractmethod
     def validate_file(self, file_path: str) -> bool:
@@ -39,7 +38,6 @@ class DocumentLoaderPort(ABC):
         Returns:
             True if file exists and is readable, False otherwise
         """
-        pass
 
 
 class EmbeddingModelPort(ABC):
@@ -56,7 +54,6 @@ class EmbeddingModelPort(ABC):
         Returns:
             Numpy array representing the text embedding
         """
-        pass
 
     @abstractmethod
     def encode_batch(self, texts: List[str]) -> np.ndarray:
@@ -69,7 +66,6 @@ class EmbeddingModelPort(ABC):
         Returns:
             Numpy array of shape (len(texts), embedding_dim)
         """
-        pass
 
     @abstractmethod
     def get_embedding_dimension(self) -> int:
@@ -79,7 +75,6 @@ class EmbeddingModelPort(ABC):
         Returns:
             Integer representing embedding dimension
         """
-        pass
 
 
 class VectorStorePort(ABC):
@@ -94,7 +89,6 @@ class VectorStorePort(ABC):
             embeddings: Numpy array of shape (n, embedding_dim)
             chunks: List of Chunk objects corresponding to embeddings
         """
-        pass
 
     @abstractmethod
     def search(self, query_embedding: np.ndarray, top_k: int) -> List[Tuple["Chunk", float]]:
@@ -108,7 +102,6 @@ class VectorStorePort(ABC):
         Returns:
             List of tuples (Chunk, similarity_score) sorted by similarity
         """
-        pass
 
     @abstractmethod
     def save_index(self, file_path: str) -> None:
@@ -118,7 +111,6 @@ class VectorStorePort(ABC):
         Args:
             file_path: Path where the index should be saved
         """
-        pass
 
     @abstractmethod
     def load_index(self, file_path: str) -> None:
@@ -131,7 +123,6 @@ class VectorStorePort(ABC):
         Raises:
             FileNotFoundError: If the index file does not exist
         """
-        pass
 
     @abstractmethod
     def get_index_size(self) -> int:
@@ -141,7 +132,6 @@ class VectorStorePort(ABC):
         Returns:
             Integer count of embeddings in the index
         """
-        pass
 
 
 class LLMPort(ABC):
@@ -160,7 +150,6 @@ class LLMPort(ABC):
         Returns:
             Generated answer text
         """
-        pass
 
     @abstractmethod
     def get_model_name(self) -> str:
@@ -170,4 +159,3 @@ class LLMPort(ABC):
         Returns:
             String identifier of the model
         """
-        pass

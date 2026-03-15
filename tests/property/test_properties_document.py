@@ -5,7 +5,6 @@
 
 import pytest
 import os
-from pathlib import Path
 from hypothesis import given, strategies as st, assume, settings
 
 from core.document_processor import DocumentProcessor
@@ -14,7 +13,7 @@ from adapters.pypdf_adapter import PyPDFAdapter
 from core.models import DocumentContent, Chunk, ChunkMetadata
 
 # Available test PDFs in the workspace
-AVAILABLE_PDFS = ["Annual-Report-FY-2023-24 (1) (1).pdf", "ML_intern_assignment (1) (1).pdf"]
+AVAILABLE_PDFS = ["Annual-Report-FY-2023-24 (1) (1).pd", "ML_intern_assignment (1) (1).pd"]
 
 
 class TestDocumentProcessorProperties:
@@ -672,13 +671,13 @@ class TestTextChunkerProperties:
 
         # 3. All original content should be covered (Requirement 11.5)
         assert coverage_result.is_complete, (
-            f"Chunking should preserve all original content. "
+            "Chunking should preserve all original content. "
             f"Missing segments: {len(coverage_result.missing_segments)}"
         )
 
         # 4. No text segments should be skipped (Requirement 11.3)
         assert len(coverage_result.missing_segments) == 0, (
-            f"No text segments should be skipped. "
+            "No text segments should be skipped. "
             f"Found {len(coverage_result.missing_segments)} missing segments: "
             f"{coverage_result.missing_segments[:3]}"
         )  # Show first 3 for debugging
@@ -694,7 +693,7 @@ class TestTextChunkerProperties:
         missing_positions = all_positions - covered_positions
 
         assert len(missing_positions) == 0, (
-            f"All positions in original text should be covered. "
+            "All positions in original text should be covered. "
             f"Missing {len(missing_positions)} positions"
         )
 
@@ -719,12 +718,12 @@ class TestTextChunkerProperties:
             actual_overlap = current_end - next_start
 
             assert actual_overlap >= 0, (
-                f"Chunks should overlap or be adjacent, not have gaps: "
+                "Chunks should overlap or be adjacent, not have gaps: "
                 f"overlap={actual_overlap} between chunks {i} and {i+1}"
             )
 
             assert actual_overlap <= chunk_size, (
-                f"Overlap should not exceed chunk_size: "
+                "Overlap should not exceed chunk_size: "
                 f"overlap={actual_overlap} > chunk_size={chunk_size} "
                 f"between chunks {i} and {i+1}"
             )
@@ -750,7 +749,7 @@ class TestTextChunkerProperties:
         reconstructed_text = "".join(reconstructed_chars)
 
         assert reconstructed_text == text, (
-            f"Reconstructed text should equal original text. "
+            "Reconstructed text should equal original text. "
             f"Original length: {len(text)}, Reconstructed length: {len(reconstructed_text)}"
         )
 
@@ -760,6 +759,6 @@ class TestTextChunkerProperties:
         # 11. Verify that the last chunk covers the end of the text
         last_chunk = chunks[-1]
         assert last_chunk.metadata.end_position == len(text), (
-            f"Last chunk should end at text length. "
+            "Last chunk should end at text length. "
             f"Expected {len(text)}, got {last_chunk.metadata.end_position}"
         )

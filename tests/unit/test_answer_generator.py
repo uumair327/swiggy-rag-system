@@ -29,14 +29,14 @@ class TestAnswerGenerator:
             RetrievedChunk(
                 chunk=Chunk(
                     text="The revenue in 2023 was $100 million.",
-                    metadata=ChunkMetadata(0, "test.pdf", 0, 38),
+                    metadata=ChunkMetadata(0, "test.pd", 0, 38),
                 ),
                 similarity_score=0.9,
             ),
             RetrievedChunk(
                 chunk=Chunk(
                     text="The company grew by 25% year over year.",
-                    metadata=ChunkMetadata(1, "test.pdf", 30, 70),
+                    metadata=ChunkMetadata(1, "test.pd", 30, 70),
                 ),
                 similarity_score=0.7,
             ),
@@ -133,7 +133,7 @@ class TestAnswerGenerator:
             RetrievedChunk(
                 chunk=Chunk(
                     text="The revenue was $100 million.",
-                    metadata=ChunkMetadata(0, "test.pdf", 0, 29),
+                    metadata=ChunkMetadata(0, "test.pd", 0, 29),
                 ),
                 similarity_score=0.9,
             ),
@@ -152,7 +152,7 @@ class TestAnswerGenerator:
             RetrievedChunk(
                 chunk=Chunk(
                     text="The revenue was $100 million.",
-                    metadata=ChunkMetadata(0, "test.pdf", 0, 29),
+                    metadata=ChunkMetadata(0, "test.pd", 0, 29),
                 ),
                 similarity_score=0.6,
             ),
@@ -171,7 +171,7 @@ class TestAnswerGenerator:
             RetrievedChunk(
                 chunk=Chunk(
                     text="The revenue was $100 million.",
-                    metadata=ChunkMetadata(0, "test.pdf", 0, 29),
+                    metadata=ChunkMetadata(0, "test.pd", 0, 29),
                 ),
                 similarity_score=0.4,
             ),

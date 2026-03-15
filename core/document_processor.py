@@ -3,7 +3,6 @@
 import os
 import logging
 from datetime import datetime
-from typing import Optional
 
 from core.models import DocumentContent, ValidationResult
 from ports.outbound import DocumentLoaderPort
@@ -57,7 +56,7 @@ class DocumentProcessor:
                 is_valid=False, error_message=f"Error: Path is not a file: {file_path}"
             )
 
-        if not file_path.lower().endswith(".pdf"):
+        if not file_path.lower().endswith(".pd"):
             logger.error(f"File path validation failed: not a PDF file: {file_path}")
             return ValidationResult(
                 is_valid=False, error_message=f"Error: File is not a PDF: {file_path}"
@@ -137,13 +136,13 @@ class DocumentProcessor:
         except FileNotFoundError:
             # Re-raise file not found errors
             raise
-        except ValueError as e:
+        except ValueError:
             # Re-raise value errors (corrupted PDF, empty document)
             raise
         except Exception as e:
             # Catch any other exceptions and wrap them
             error_msg = (
-                f"Error: Could not process PDF file. The file may be corrupted. "
+                "Error: Could not process PDF file. The file may be corrupted. "
                 f"Details: {str(e)}"
             )
             logger.error(f"Document loading failed: {error_msg}", exc_info=True)

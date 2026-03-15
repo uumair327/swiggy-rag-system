@@ -265,7 +265,6 @@ class TestContextRetrieverProperties:
         """
         from core.context_retriever import ContextRetriever
         from core.embedding_generator import EmbeddingGenerator
-        from core.text_chunker import TextChunker
         from adapters.faiss_adapter import FAISSAdapter
         from core.models import Chunk, ChunkMetadata
 
@@ -277,7 +276,7 @@ class TestContextRetrieverProperties:
                 text=chunk_text,
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document=f"test_doc_{i % 3}.pdf",  # Multiple source docs
+                    source_document=f"test_doc_{i % 3}.pd",  # Multiple source docs
                     start_position=i * 100,
                     end_position=i * 100 + len(chunk_text),
                 ),
@@ -518,7 +517,7 @@ class TestAnswerGeneratorProperties:
                 text=chunk_text,
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document=f"test_doc_{i % 3}.pdf",
+                    source_document=f"test_doc_{i % 3}.pd",
                     start_position=i * 100,
                     end_position=i * 100 + len(chunk_text),
                 ),
@@ -736,7 +735,7 @@ class TestAnswerGeneratorProperties:
                 text=chunk_text,
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document="test_doc.pdf",
+                    source_document="test_doc.pd",
                     start_position=i * 100,
                     end_position=i * 100 + len(chunk_text),
                 ),
@@ -822,7 +821,7 @@ class TestAnswerGeneratorProperties:
                 text=chunk_text,
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document=f"test_doc_{i % 3}.pdf",
+                    source_document=f"test_doc_{i % 3}.pd",
                     start_position=i * 100,
                     end_position=i * 100 + len(chunk_text),
                 ),
@@ -942,7 +941,7 @@ class TestAnswerGeneratorProperties:
                 text=chunk_text,
                 metadata=ChunkMetadata(
                     chunk_index=i,
-                    source_document=f"test_doc_{i % 3}.pdf",
+                    source_document=f"test_doc_{i % 3}.pd",
                     start_position=i * 100,
                     end_position=i * 100 + len(chunk_text),
                 ),
