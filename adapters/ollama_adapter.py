@@ -1,7 +1,7 @@
 """Ollama adapter for local LLM interactions."""
 
 import logging
-import requests
+import requests  # type: ignore[import-untyped]
 
 from ports.outbound import LLMPort
 
