@@ -4,6 +4,54 @@
 
 This guide covers deploying the Swiggy RAG System in various environments.
 
+## GitHub Actions + GitHub Pages (Recommended UX Setup)
+
+This repository now includes two separate deployment workflows:
+
+- [CI workflow](../.github/workflows/ci.yml): test/lint/type/security checks
+- [Pages workflow](../.github/workflows/pages.yml): deploy static UI from the web folder
+- [API deploy workflow](../.github/workflows/deploy-api.yml): build/push backend image and trigger cloud deployment
+
+### 1. Enable GitHub Pages
+
+1. Open repository Settings -> Pages
+2. Set Source to GitHub Actions
+3. Push changes to main branch
+4. Verify [pages workflow](../.github/workflows/pages.yml) run succeeds
+
+### 2. Configure backend deployment secrets
+
+In repository Settings -> Secrets and variables -> Actions, add:
+
+- CLOUD_DEPLOY_HOOK_URL (required): deploy webhook from your cloud provider
+- API_HEALTHCHECK_URL (optional): URL ending with /health for post-deploy verification
+
+### 3. Configure cloud runtime environment
+
+Set these environment variables in your cloud host:
+
+- LLM_PROVIDER=ollama or openai
+- LLM_MODEL=llama3.2 (or your selected model)
+- OPENAI_API_KEY (required only if LLM_PROVIDER=openai)
+- OLLAMA_BASE_URL (if using external Ollama service)
+- VECTOR_INDEX_PATH=/app/data/vector_index.faiss
+
+### 4. Deploy flow
+
+1. Push backend changes to main
+2. [deploy-api workflow](../.github/workflows/deploy-api.yml) builds and pushes image to GHCR
+3. Workflow calls your deploy webhook
+4. Optional health check confirms API is live
+5. GitHub Pages UI connects to deployed API URL
+
+### Security best practices
+
+- Use GitHub Environment protection for production deployments
+- Keep deploy hook URL only in Actions secrets
+- Restrict CORS origins in production (avoid wildcard)
+- Rotate API keys and deploy hooks periodically
+- Use least-privilege cloud credentials
+
 ## Prerequisites
 
 - Python 3.12+

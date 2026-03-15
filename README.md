@@ -65,6 +65,56 @@ Or use the convenience script:
 ./run.sh query "Your question here"
 ```
 
+## Web UI (GitHub Pages)
+
+This repository includes a static frontend in [web/index.html](web/index.html) that can be
+published with GitHub Pages. The UI provides:
+
+- API health check
+- PDF ingestion trigger
+- Question/answer interface
+
+### 1. Run the backend API locally (or deploy it)
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Recommended for local-first setup
+export LLM_PROVIDER=ollama
+export LLM_MODEL=llama3.2
+
+# Start API server
+uvicorn api_server:app --host 0.0.0.0 --port 8000
+```
+
+### 2. Open the UI
+
+- Local static file: open [web/index.html](web/index.html) in browser
+- GitHub Pages URL (after workflow deploy):
+  `https://<your-username>.github.io/<repo-name>/`
+
+### 3. Connect UI to API
+
+In the UI, set `API Base URL` to your backend endpoint, for example:
+
+- `http://localhost:8000` (local)
+- `https://your-api.example.com` (cloud)
+
+Note: GitHub Pages hosts static files only. Your Python API must run separately.
+
+### GitHub Setup Checklist (Best Practices)
+
+1. Enable GitHub Pages with source set to GitHub Actions.
+2. Keep production deployment in a protected GitHub Environment named `production`.
+3. Add Actions secrets:
+  - `CLOUD_DEPLOY_HOOK_URL` (required for backend deploy workflow)
+  - `API_HEALTHCHECK_URL` (optional but recommended)
+4. Push to `main` to trigger:
+  - [.github/workflows/ci.yml](.github/workflows/ci.yml)
+  - [.github/workflows/pages.yml](.github/workflows/pages.yml)
+  - [.github/workflows/deploy-api.yml](.github/workflows/deploy-api.yml) when backend files change
+
 ## Architecture
 
 ### Hexagonal Architecture (Ports & Adapters)

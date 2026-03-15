@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiggy RAG Web Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape shape-a"></div>
+    <div class="bg-shape shape-b"></div>
+
+    <main class="app-shell">
+      <header class="header-card">
+        <p class="eyebrow">GitHub Pages UI</p>
+        <h1>Swiggy RAG Web Console</h1>
+        <p class="subtitle">
+          Connect this interface to your deployed API and query your indexed PDF instantly.
+        </p>
+      </header>
+
+      <section class="panel">
+        <h2>Connection</h2>
+        <label for="apiBaseUrl">API Base URL</label>
+        <div class="row">
+          <input id="apiBaseUrl" type="url" placeholder="https://your-api.example.com" />
+          <button id="saveApiUrl" class="btn btn-secondary">Save</button>
+        </div>
+        <p class="hint">Example local URL: http://localhost:8000</p>
+        <div class="row compact">
+          <button id="healthCheckBtn" class="btn btn-secondary">Health Check</button>
+          <span id="healthStatus" class="status-pill">Not checked</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Ingest Document</h2>
+        <label for="filePath">PDF File Path (on API server)</label>
+        <input id="filePath" type="text" placeholder="/absolute/path/to/document.pdf" />
+        <button id="ingestBtn" class="btn btn-primary">Ingest</button>
+        <pre id="ingestOutput" class="output"></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Ask Question</h2>
+        <label for="question">Question</label>
+        <textarea id="question" rows="4" placeholder="What was total revenue in FY 2024?"></textarea>
+        <button id="queryBtn" class="btn btn-primary">Ask</button>
+
+        <div class="answer-wrap">
+          <h3>Answer</h3>
+          <p id="answerText">No answer yet.</p>
+          <p id="answerMeta" class="muted"></p>
+        </div>
+      </section>
+
+      <footer class="footer-note">
+        <p>
+          GitHub Pages serves this static UI only. The Python RAG backend must run separately
+          (local machine, VM, Docker, or cloud).
+        </p>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

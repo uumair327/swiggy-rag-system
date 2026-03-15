@@ -15,6 +15,10 @@ openai>=1.50.0
 # Ollama Support
 requests>=2.32.4
 
+# Web API (for GitHub Pages UI backend)
+fastapi>=0.116.1
+uvicorn>=0.35.0
+
 # Type stubs for type checking
 types-requests>=2.32.0
 
