@@ -10,7 +10,7 @@ faiss-cpu==1.13.2
 # LLM Framework
 langchain==0.1.6
 langchain-openai==0.0.5
-openai==1.10.0
+openai==2.28.0
 
 # Ollama Support
 requests==2.31.0
