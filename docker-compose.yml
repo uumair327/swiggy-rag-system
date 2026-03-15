@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: swiggy-rag-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  rag-system:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: swiggy-rag-system
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      - LLM_PROVIDER=ollama
+      - LLM_MODEL=llama3.2
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - CHUNK_SIZE=1000
+      - CHUNK_OVERLAP=200
+      - TOP_K_CHUNKS=5
+      - SIMILARITY_THRESHOLD=0.3
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+    command: ["--help"]
+
+volumes:
+  ollama_data:
+    driver: local
+
+networks:
+  default:
+    name: swiggy-rag-network
