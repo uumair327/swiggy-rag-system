@@ -8,7 +8,7 @@ sentence-transformers==2.3.1
 faiss-cpu==1.13.2
 
 # LLM Framework
-langchain==0.1.6
+langchain==1.2.12
 langchain-openai==0.0.5
 openai==1.10.0
 
