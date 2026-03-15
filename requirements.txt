@@ -15,6 +15,9 @@ openai==1.10.0
 # Ollama Support
 requests==2.31.0
 
+# Type stubs for type checking
+types-requests==2.31.0.20240125
+
 # Testing
 pytest==8.0.0
 pytest-mock==3.12.0
