@@ -1,5 +1,5 @@
 # Multi-stage build for production-ready Swiggy RAG System
-FROM python:3.12-slim as builder
+FROM python:3.14-slim as builder
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
@@ -22,7 +22,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Production stage
-FROM python:3.12-slim
+FROM python:3.14-slim
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
