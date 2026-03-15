@@ -13,7 +13,7 @@ langchain-openai==0.0.5
 openai==1.10.0
 
 # Ollama Support
-requests==2.31.0
+requests==2.32.5
 
 # Testing
 pytest==8.0.0
