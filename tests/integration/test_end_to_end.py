@@ -419,11 +419,11 @@ class TestErrorRecoveryScenarios:
         rag_system = create_rag_system(config=test_config)
 
         # Attempt failed ingestion
-        failed_result = rag_system.ingest_document("/nonexistent.pd")
+        failed_result = rag_system.ingest_document("/nonexistent.pdf")
         assert failed_result.success is False
 
         # Create a valid test PDF
-        test_pdf = os.path.join(temp_dir, "test.pd")
+        test_pdf = os.path.join(temp_dir, "test.pdf")
         # Create a minimal valid PDF
         pdf_content = b"""%PDF-1.4
 1 0 obj

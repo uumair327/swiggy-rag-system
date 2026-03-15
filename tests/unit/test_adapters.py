@@ -23,7 +23,7 @@ class TestPyPDFAdapter:
 
     def test_validate_file_exists(self, adapter, tmp_path):
         """Test file validation for existing PDF."""
-        test_file = tmp_path / "test.pd"
+        test_file = tmp_path / "test.pdf"
         test_file.write_text("PDF content")
 
         result = adapter.validate_file(str(test_file))
@@ -32,7 +32,7 @@ class TestPyPDFAdapter:
 
     def test_validate_file_not_exists(self, adapter):
         """Test file validation for non-existent file."""
-        result = adapter.validate_file("/nonexistent/file.pd")
+        result = adapter.validate_file("/nonexistent/file.pdf")
 
         assert result is False
 
@@ -57,7 +57,7 @@ class TestPyPDFAdapter:
     @patch("adapters.pypdf_adapter.pypdf.PdfReader")
     def test_load_pdf_success(self, mock_reader, adapter, tmp_path):
         """Test successful PDF loading."""
-        test_file = tmp_path / "test.pd"
+        test_file = tmp_path / "test.pdf"
         test_file.write_text("PDF")
 
         # Mock PDF reader
@@ -76,12 +76,12 @@ class TestPyPDFAdapter:
     def test_load_pdf_file_not_found(self, adapter):
         """Test PDF loading with non-existent file."""
         with pytest.raises(FileNotFoundError):
-            adapter.load_pdf("/nonexistent/file.pd")
+            adapter.load_pdf("/nonexistent/file.pdf")
 
     @patch("adapters.pypdf_adapter.pypdf.PdfReader")
     def test_load_pdf_corrupted(self, mock_reader, adapter, tmp_path):
         """Test PDF loading with corrupted file."""
-        test_file = tmp_path / "corrupted.pd"
+        test_file = tmp_path / "corrupted.pdf"
         test_file.write_text("corrupted")
 
         from pypdf.errors import PdfReadError
@@ -96,7 +96,7 @@ class TestPyPDFAdapter:
     @patch("adapters.pypdf_adapter.pypdf.PdfReader")
     def test_load_pdf_empty_content(self, mock_reader, adapter, tmp_path):
         """Test PDF loading with no extractable text."""
-        test_file = tmp_path / "empty.pd"
+        test_file = tmp_path / "empty.pdf"
         test_file.write_text("PDF")
 
         mock_page = Mock()
