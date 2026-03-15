@@ -9,28 +9,28 @@ if TYPE_CHECKING:
 
 class RAGServicePort(ABC):
     """Primary entry point for RAG system operations."""
-    
+
     @abstractmethod
     def ingest_document(self, file_path: str) -> "IngestionResult":
         """
         Load and index a document.
-        
+
         Args:
             file_path: Path to the PDF document to ingest
-            
+
         Returns:
             IngestionResult containing success status and statistics
         """
         pass
-    
+
     @abstractmethod
     def ask_question(self, question: str) -> "Answer":
         """
         Process a question and return an answer.
-        
+
         Args:
             question: Natural language question to answer
-            
+
         Returns:
             Answer with text, supporting chunks, and confidence level
         """

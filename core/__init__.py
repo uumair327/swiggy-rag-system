@@ -7,9 +7,9 @@ from core.answer_generator import AnswerGenerator
 from core.rag_orchestrator import RAGOrchestrator
 
 __all__ = [
-    'DocumentProcessor',
-    'QueryHandler',
-    'ContextRetriever',
-    'AnswerGenerator',
-    'RAGOrchestrator'
+    "DocumentProcessor",
+    "QueryHandler",
+    "ContextRetriever",
+    "AnswerGenerator",
+    "RAGOrchestrator",
 ]

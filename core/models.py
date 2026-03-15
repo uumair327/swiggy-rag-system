@@ -8,6 +8,7 @@ import numpy as np
 @dataclass
 class DocumentContent:
     """Represents extracted document content."""
+
     text: str
     source_path: str
     page_count: int
@@ -17,6 +18,7 @@ class DocumentContent:
 @dataclass
 class ChunkMetadata:
     """Metadata associated with a text chunk."""
+
     chunk_index: int
     source_document: str
     start_position: int
@@ -26,6 +28,7 @@ class ChunkMetadata:
 @dataclass
 class Chunk:
     """A segment of document text with metadata."""
+
     text: str
     metadata: ChunkMetadata
 
@@ -33,9 +36,10 @@ class Chunk:
 @dataclass
 class Embedding:
     """Vector representation of text."""
+
     vector: np.ndarray
     source_text: str
-    
+
     @property
     def dimension(self) -> int:
         """Return the dimensionality of the embedding vector."""
@@ -45,6 +49,7 @@ class Embedding:
 @dataclass
 class RetrievedChunk:
     """A chunk retrieved from vector search with similarity score."""
+
     chunk: Chunk
     similarity_score: float
 
@@ -52,10 +57,11 @@ class RetrievedChunk:
 @dataclass
 class Answer:
     """Generated answer with supporting evidence."""
+
     text: str
     supporting_chunks: List[RetrievedChunk]
     confidence: str  # "high", "medium", "low", "not_found"
-    
+
     def has_answer(self) -> bool:
         """Check if an answer was found."""
         return self.confidence != "not_found"
@@ -64,6 +70,7 @@ class Answer:
 @dataclass
 class IngestionResult:
     """Result of document ingestion process."""
+
     success: bool
     chunks_created: int
     embeddings_stored: int
@@ -73,6 +80,7 @@ class IngestionResult:
 @dataclass
 class QueryResult:
     """Result of query processing."""
+
     answer: Answer
     processing_time_seconds: float
 
@@ -80,6 +88,7 @@ class QueryResult:
 @dataclass
 class ValidationResult:
     """Result of validation operations."""
+
     is_valid: bool
     error_message: Optional[str] = None
 
@@ -87,6 +96,7 @@ class ValidationResult:
 @dataclass
 class CoverageResult:
     """Result of chunk coverage validation."""
+
     is_complete: bool
     missing_segments: List[str]
     duplicate_segments: List[str]

@@ -5,11 +5,7 @@ import os
 from hypothesis import settings
 
 # Register Hypothesis profile for property-based tests
-settings.register_profile(
-    "rag_system",
-    max_examples=100,
-    deadline=5000  # 5 seconds per test
-)
+settings.register_profile("rag_system", max_examples=100, deadline=5000)  # 5 seconds per test
 settings.load_profile("rag_system")
 
 
@@ -33,25 +29,19 @@ def sample_text():
 def sample_chunks():
     """Provide sample chunks for testing."""
     from core.models import Chunk, ChunkMetadata
-    
+
     return [
         Chunk(
             text="This is the first chunk of text.",
             metadata=ChunkMetadata(
-                chunk_index=0,
-                source_document="test.pdf",
-                start_position=0,
-                end_position=33
-            )
+                chunk_index=0, source_document="test.pdf", start_position=0, end_position=33
+            ),
         ),
         Chunk(
             text="This is the second chunk of text.",
             metadata=ChunkMetadata(
-                chunk_index=1,
-                source_document="test.pdf",
-                start_position=20,
-                end_position=53
-            )
+                chunk_index=1, source_document="test.pdf", start_position=20, end_position=53
+            ),
         ),
     ]
 
@@ -60,7 +50,7 @@ def sample_chunks():
 def rag_config():
     """Provide test configuration."""
     from core.config import RAGConfig
-    
+
     return RAGConfig(
         chunk_size=1000,
         chunk_overlap=200,
@@ -71,7 +61,7 @@ def rag_config():
         llm_temperature=0.0,
         vector_index_path="./test_data/vector_index.faiss",
         chunks_metadata_path="./test_data/chunks_metadata.json",
-        openai_api_key="test-api-key"
+        openai_api_key="test-api-key",
     )
 
 
@@ -79,12 +69,13 @@ def rag_config():
 def embedding_model_cached():
     """
     Cache the embedding model for the entire test session.
-    
+
     This fixture loads the sentence-transformers model once and reuses it
     across all integration tests to avoid repeated downloads and SSL issues.
     """
     try:
         from adapters.sentence_transformer_adapter import SentenceTransformerAdapter
+
         model = SentenceTransformerAdapter(model_name="all-MiniLM-L6-v2")
         return model
     except Exception as e:
