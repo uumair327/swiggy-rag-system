@@ -1,5 +1,5 @@
 # PDF Processing
-pypdf==4.0.1
+pypdf==6.8.0
 
 # Embeddings
 sentence-transformers==2.3.1
