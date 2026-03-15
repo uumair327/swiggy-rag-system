@@ -3,13 +3,21 @@
 **Validates: Requirements 9.4, 9.5, 9.6, 10.1, 10.2, 10.3, 10.5**
 """
 
-import os
+import pytest
 import numpy as np
 from typing import List, Tuple
+from pathlib import Path
 from hypothesis import given, strategies as st, assume, settings, HealthCheck
 
 from core.models import Chunk, Embedding
 from ports.outbound import DocumentLoaderPort, EmbeddingModelPort, VectorStorePort, LLMPort
+
+AVAILABLE_PDFS = sorted(str(path) for path in Path(".").rglob("*.pdf"))
+
+pytestmark = pytest.mark.skipif(
+    not AVAILABLE_PDFS,
+    reason="No PDF fixtures available for property tests.",
+)
 
 # ============================================================================
 # Mock Adapters for Testing Replaceability
@@ -144,9 +152,7 @@ class TestAdapterReplaceabilityProperties:
         mock_content=st.text(min_size=100, max_size=2000),
         embedding_dim=st.sampled_from([128, 256, 384]),
         question=st.text(min_size=10, max_size=200),
-        pdf_choice=st.sampled_from(
-            ["Annual-Report-FY-2023-24 (1) (1).pdf", "ML_intern_assignment (1) (1).pdf"]
-        ),
+        pdf_choice=st.sampled_from(AVAILABLE_PDFS),
     )
     @settings(
         max_examples=100,
@@ -184,9 +190,6 @@ class TestAdapterReplaceabilityProperties:
         # Skip empty or whitespace-only content
         assume(len(mock_content.strip()) > 0)
         assume(len(question.strip()) > 0)
-
-        # Check if PDF exists (needed for file validation in DocumentProcessor)
-        assume(os.path.exists(pdf_choice))
 
         # ====================================================================
         # Test 1: System with Mock Adapters

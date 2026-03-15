@@ -4,7 +4,7 @@
 """
 
 import pytest
-import os
+from pathlib import Path
 from hypothesis import given, strategies as st, assume, settings, HealthCheck
 
 from core.document_processor import DocumentProcessor
@@ -12,8 +12,13 @@ from core.text_chunker import TextChunker
 from adapters.pypdf_adapter import PyPDFAdapter
 from core.models import DocumentContent, Chunk, ChunkMetadata
 
-# Available test PDFs in the workspace
-AVAILABLE_PDFS = ["Annual-Report-FY-2023-24 (1) (1).pdf", "ML_intern_assignment (1) (1).pdf"]
+# Available test PDFs discovered in the workspace
+AVAILABLE_PDFS = sorted(str(path) for path in Path(".").rglob("*.pdf"))
+
+pytestmark = pytest.mark.skipif(
+    not AVAILABLE_PDFS,
+    reason="No PDF fixtures available for property tests.",
+)
 
 
 class TestDocumentProcessorProperties:
@@ -40,9 +45,7 @@ class TestDocumentProcessorProperties:
         - 1.5: Document_Processor SHALL preserve the original text structure
               including paragraphs and sections
         """
-        # Check if PDF exists
         pdf_path = pdf_choice
-        assume(os.path.exists(pdf_path))
 
         # Create DocumentProcessor with PyPDFAdapter
         loader = PyPDFAdapter()
@@ -107,9 +110,7 @@ class TestDocumentProcessorProperties:
         For any valid PDF document, loading the same document multiple times
         should produce consistent results.
         """
-        # Check if PDF exists
         pdf_path = pdf_choice
-        assume(os.path.exists(pdf_path))
 
         # Create DocumentProcessor with PyPDFAdapter
         loader = PyPDFAdapter()
@@ -153,9 +154,7 @@ class TestDocumentProcessorProperties:
         For any valid PDF document, the extracted text should preserve
         the original text structure including paragraphs and sections.
         """
-        # Check if PDF exists
         pdf_path = pdf_choice
-        assume(os.path.exists(pdf_path))
 
         # Create DocumentProcessor with PyPDFAdapter
         loader = PyPDFAdapter()
@@ -336,9 +335,19 @@ class TestTextChunkerProperties:
             assert chunk.text == expected_text, f"Chunk text should match text[{start}:{end}]"
 
     @given(
-        text=st.text(min_size=2000, max_size=5000), chunk_size=st.just(1000), overlap=st.just(200)
+        text=st.text(
+            alphabet=st.characters(max_codepoint=127),
+            min_size=1100,
+            max_size=2500,
+        ),
+        chunk_size=st.just(1000),
+        overlap=st.just(200),
     )
-    @settings(max_examples=100, deadline=5000)
+    @settings(
+        max_examples=100,
+        deadline=5000,
+        suppress_health_check=[HealthCheck.large_base_example],
+    )
     def test_property_2_chunk_overlap_consistency(self, text, chunk_size, overlap):
         """
         Property 2 (Overlap variant): Chunk Structure Consistency

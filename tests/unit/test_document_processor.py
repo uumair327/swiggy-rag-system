@@ -37,7 +37,7 @@ class TestDocumentProcessor:
     def test_validate_file_path_file_not_found(self, processor, mock_loader):
         """Test validation fails when file does not exist."""
         mock_loader.validate_file.return_value = False
-        result = processor.validate_file_path("/nonexistent/file.pd")
+        result = processor.validate_file_path("/nonexistent/file.pdf")
         assert not result.is_valid
         assert "not found" in result.error_message
 
@@ -54,7 +54,7 @@ class TestDocumentProcessor:
     def test_validate_file_path_valid_pdf(self, processor, mock_loader, tmp_path):
         """Test validation succeeds for valid PDF file."""
         # Create a temporary PDF file
-        test_file = tmp_path / "test.pd"
+        test_file = tmp_path / "test.pdf"
         test_file.write_text("PDF content")
 
         mock_loader.validate_file.return_value = True
@@ -68,14 +68,14 @@ class TestDocumentProcessor:
         mock_loader.validate_file.return_value = False
 
         with pytest.raises(FileNotFoundError) as exc_info:
-            processor.load_document("/nonexistent/file.pd")
+            processor.load_document("/nonexistent/file.pdf")
 
         assert "not found" in str(exc_info.value)
 
     def test_load_document_corrupted_pdf(self, processor, mock_loader, tmp_path):
         """Test load_document raises ValueError for corrupted PDF."""
         # Create a temporary PDF file
-        test_file = tmp_path / "corrupted.pd"
+        test_file = tmp_path / "corrupted.pdf"
         test_file.write_text("corrupted")
 
         mock_loader.validate_file.return_value = True
@@ -89,7 +89,7 @@ class TestDocumentProcessor:
     def test_load_document_empty_content(self, processor, mock_loader, tmp_path):
         """Test load_document raises ValueError for empty PDF content."""
         # Create a temporary PDF file
-        test_file = tmp_path / "empty.pd"
+        test_file = tmp_path / "empty.pdf"
         test_file.write_text("empty")
 
         mock_loader.validate_file.return_value = True
@@ -103,7 +103,7 @@ class TestDocumentProcessor:
     def test_load_document_success(self, processor, mock_loader, tmp_path):
         """Test successful document loading and text extraction."""
         # Create a temporary PDF file
-        test_file = tmp_path / "valid.pd"
+        test_file = tmp_path / "valid.pdf"
         test_file.write_text("valid pd")
 
         expected_text = "This is extracted text from the PDF.\n\nIt has multiple paragraphs."
@@ -124,7 +124,7 @@ class TestDocumentProcessor:
 
     def test_load_document_preserves_text_structure(self, processor, mock_loader, tmp_path):
         """Test that load_document preserves paragraph structure."""
-        test_file = tmp_path / "structured.pd"
+        test_file = tmp_path / "structured.pdf"
         test_file.write_text("structured")
 
         # Text with paragraphs and sections
@@ -148,7 +148,7 @@ Here is the main content of the document."""
 
     def test_load_document_page_count_estimation(self, processor, mock_loader, tmp_path):
         """Test that page count is estimated based on text length."""
-        test_file = tmp_path / "multipage.pd"
+        test_file = tmp_path / "multipage.pdf"
         test_file.write_text("multipage")
 
         # Create text that should span multiple pages (~3000 chars per page)
@@ -164,7 +164,7 @@ Here is the main content of the document."""
 
     def test_load_document_minimum_page_count(self, processor, mock_loader, tmp_path):
         """Test that page count is at least 1 for short documents."""
-        test_file = tmp_path / "short.pd"
+        test_file = tmp_path / "short.pdf"
         test_file.write_text("short")
 
         short_text = "Short document"
@@ -178,7 +178,7 @@ Here is the main content of the document."""
 
     def test_document_processor_uses_injected_loader(self, mock_loader, tmp_path):
         """Test that DocumentProcessor uses the injected DocumentLoaderPort."""
-        test_file = tmp_path / "test.pd"
+        test_file = tmp_path / "test.pdf"
         test_file.write_text("test")
 
         processor = DocumentProcessor(mock_loader)

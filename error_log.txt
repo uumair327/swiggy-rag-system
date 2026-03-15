@@ -1,0 +1,1518 @@
+Run pytest --cov=core --cov=ports --cov=adapters --cov-report=xml --cov-report=term-missing
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-9.0.2, pluggy-1.6.0 -- /Library/Frameworks/Python.framework/Versions/3.12/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'rag_system' -> database=None, print_blob=True, derandomize=True, deadline=timedelta(milliseconds=5000), suppress_health_check=(HealthCheck.too_slow,)
+rootdir: /Users/runner/work/swiggy-rag-system/swiggy-rag-system
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+testpaths: tests
+plugins: anyio-4.12.1, mock-3.15.1, hypothesis-6.151.9, langsmith-0.7.17, cov-7.0.0
+collecting ... collected 208 items
+
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_complete_workflow_ingest_and_query SKIPPED [  0%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_persistence_workflow_save_and_load SKIPPED [  0%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_multiple_queries_on_same_document SKIPPED [  1%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_query_with_no_relevant_context SKIPPED [  1%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_ingest_nonexistent_file PASSED [  2%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_ingest_corrupted_pdf PASSED [  2%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_query_before_ingestion PASSED [  3%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_query_with_empty_question PASSED [  3%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_load_nonexistent_index PASSED [  4%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_recovery_after_failed_ingestion PASSED [  4%]
+tests/integration/test_end_to_end.py::TestContextRetrieval::test_retrieved_chunks_have_metadata SKIPPED [  5%]
+tests/integration/test_end_to_end.py::TestContextRetrieval::test_retrieved_chunks_ranked_by_similarity SKIPPED [  5%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_adapter_replaceability FAILED [  6%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_embedding_model_replaceability PASSED [  6%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_vector_store_replaceability PASSED [  7%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_llm_replaceability PASSED [  7%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_completeness PASSED [  8%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_with_scores PASSED [  8%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_not_found PASSED [  9%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_consistency PASSED [  9%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_text_extraction_completeness FAILED [ 10%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_extraction_consistency FAILED [ 10%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_structure_preservation FAILED [ 11%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_chunk_structure_consistency PASSED [ 11%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_chunk_overlap_consistency PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_short_text_handling PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_3_chunk_metadata_completeness PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_4_chunk_sentence_completeness PASSED [ 13%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_17_chunking_content_preservation PASSED [ 13%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_5_embedding_generation_success PASSED [ 14%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_6_batch_embedding_completeness PASSED [ 14%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_7_embedding_dimensionality_consistency PASSED [ 15%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation PASSED [ 15%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation_empty_rejection PASSED [ 16%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation_consistency PASSED [ 16%]
+tests/property/test_properties_query.py::TestContextRetrieverProperties::test_property_12_context_retrieval_completeness PASSED [ 17%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_with_context PASSED [ 17%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_empty_context PASSED [ 18%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_not_found_response PASSED [ 18%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_14_answer_context_reference PASSED [ 19%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_14_answer_context_reference_no_reference PASSED [ 19%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_8_vector_store_retrieval_round_trip PASSED [ 20%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_9_vector_store_persistence_round_trip PASSED [ 20%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_10_top_k_retrieval_correctness PASSED [ 21%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_exists PASSED [ 21%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_not_exists PASSED [ 22%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_not_pdf PASSED [ 22%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_is_directory PASSED [ 23%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_success PASSED [ 23%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_file_not_found PASSED [ 24%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_corrupted PASSED [ 24%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_empty_content PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_init_with_model_name PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_single_text PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_empty_text PASSED [ 26%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_batch PASSED [ 26%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_batch_empty_list PASSED [ 27%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_get_embedding_dimension PASSED [ 27%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_init_with_dimension PASSED [ 28%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings PASSED [ 28%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings_dimension_mismatch PASSED [ 29%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings_count_mismatch PASSED [ 29%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_search PASSED        [ 30%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_search_empty_index PASSED [ 30%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_save_and_load_index PASSED [ 31%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_load_index_file_not_found PASSED [ 31%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_get_index_size PASSED [ 32%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_with_api_key PASSED [ 32%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_without_api_key_from_env PASSED [ 33%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_without_api_key_raises_error PASSED [ 33%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_success PASSED [ 34%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_rate_limit PASSED [ 34%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_api_failure PASSED [ 35%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_get_model_name PASSED [ 35%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_init_with_orchestrator PASSED [ 36%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_ingest_command_success PASSED [ 36%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_ingest_command_failure PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_success PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_not_found PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_with_load_index PASSED [ 38%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_invalid_command PASSED [ 38%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_keyboard_interrupt PASSED [ 39%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_init_with_llm_port PASSED [ 39%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_with_sufficient_context PASSED [ 40%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_with_insufficient_context PASSED [ 40%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_includes_supporting_chunks PASSED [ 41%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_llm_returns_not_found PASSED [ 41%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_true PASSED [ 42%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_false PASSED [ 42%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_empty_context PASSED [ 43%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_empty_answer PASSED [ 43%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_high PASSED [ 44%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_medium PASSED [ 44%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_low PASSED [ 45%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_anti_hallucination_prompt_used PASSED [ 45%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_context_text_preparation PASSED [ 46%]
+tests/unit/test_config.py::TestRAGConfig::test_default_config PASSED     [ 46%]
+tests/unit/test_config.py::TestRAGConfig::test_custom_config PASSED      [ 47%]
+tests/unit/test_config.py::TestRAGConfig::test_from_env_with_defaults PASSED [ 47%]
+tests/unit/test_config.py::TestRAGConfig::test_from_env_with_custom_values PASSED [ 48%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_init_with_defaults PASSED [ 48%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_init_with_custom_parameters PASSED [ 49%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_top_5_chunks PASSED [ 49%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_similarity_threshold_filtering PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_empty_when_no_chunks_above_threshold PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_includes_chunk_text_and_metadata PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_custom_top_k PASSED [ 51%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_custom_similarity_threshold PASSED [ 51%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_sorted_by_similarity PASSED [ 52%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_empty_search_results PASSED [ 52%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_init_with_document_loader PASSED [ 53%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_empty_path PASSED [ 53%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_file_not_found PASSED [ 54%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_not_pdf PASSED [ 54%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_valid_pdf FAILED [ 55%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_file_not_found PASSED [ 55%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_corrupted_pdf FAILED [ 56%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_empty_content FAILED [ 56%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_success FAILED [ 57%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_preserves_text_structure FAILED [ 57%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_page_count_estimation FAILED [ 58%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_minimum_page_count FAILED [ 58%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_document_processor_uses_injected_loader FAILED [ 59%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_init_with_embedding_model PASSED [ 59%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_success PASSED [ 60%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_empty_text PASSED [ 60%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_whitespace_only PASSED [ 61%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_model_failure PASSED [ 61%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_success PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_empty_list PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_with_empty_text PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_all_empty PASSED [ 63%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_model_failure PASSED [ 63%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_embedding_is_numerical_vector PASSED [ 64%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_valid_configuration PASSED [ 64%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_missing_api_key PASSED [ 65%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_empty_embedding_model_name PASSED [ 65%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_invalid_chunk_size PASSED [ 66%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_chunk_overlap_greater_than_size PASSED [ 66%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_invalid_similarity_threshold PASSED [ 67%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_with_valid_config PASSED [ 67%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_from_env PASSED [ 68%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_with_invalid_config PASSED [ 68%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_skip_validation PASSED [ 69%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_adapter_initialization_failure PASSED [ 69%]
+tests/unit/test_models.py::TestDocumentContent::test_create_document_content PASSED [ 70%]
+tests/unit/test_models.py::TestChunk::test_create_chunk_with_metadata PASSED [ 70%]
+tests/unit/test_models.py::TestEmbedding::test_create_embedding PASSED   [ 71%]
+tests/unit/test_models.py::TestAnswer::test_answer_has_answer_true PASSED [ 71%]
+tests/unit/test_models.py::TestAnswer::test_answer_has_answer_false PASSED [ 72%]
+tests/unit/test_models.py::TestValidationResult::test_valid_result PASSED [ 72%]
+tests/unit/test_models.py::TestValidationResult::test_invalid_result PASSED [ 73%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_init_with_embedding_generator PASSED [ 73%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_valid PASSED [ 74%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_empty_string PASSED [ 74%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_none PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_whitespace_only PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_with_leading_trailing_whitespace PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_success PASSED [ 76%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_empty_raises_error PASSED [ 76%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_whitespace_raises_error PASSED [ 77%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_embedding_failure PASSED [ 77%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_generates_embedding PASSED [ 78%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_init_with_all_components PASSED [ 78%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_complete_workflow_success PASSED [ 79%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_without_index_path PASSED [ 79%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_file_not_found_error PASSED [ 80%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_validation_error PASSED [ 80%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_unexpected_error PASSED [ 81%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_complete_workflow_success PASSED [ 81%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_system_not_ready PASSED [ 82%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_validation_error PASSED [ 82%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_unexpected_error PASSED [ 83%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_no_context_retrieved PASSED [ 83%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_with_embeddings PASSED [ 84%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_empty_store PASSED [ 84%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_error_handling PASSED [ 85%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_with_provided_path PASSED [ 85%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_with_default_path PASSED [ 86%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_no_path_provided PASSED [ 86%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_file_not_found PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_unexpected_error PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_document_processor PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_text_chunker PASSED [ 88%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_embedding_generator PASSED [ 88%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_vector_store PASSED [ 89%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_query_handler PASSED [ 89%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_context_retriever PASSED [ 90%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_answer_generator PASSED [ 90%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_with_default_parameters PASSED [ 91%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_shorter_than_chunk_size PASSED [ 91%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_with_exact_chunk_size PASSED [ 92%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_exact_1000_character_chunks PASSED [ 92%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_overlap PASSED [ 93%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_200_character_overlap PASSED [ 93%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_sentence_boundary_preservation PASSED [ 94%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_sentence_boundary_preservation_detailed PASSED [ 94%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_metadata_completeness PASSED [ 95%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_empty_text PASSED [ 95%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_text_with_no_sentence_boundaries PASSED [ 96%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_no_sentence_boundary_handling PASSED [ 96%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_complete PASSED [ 97%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_with_overlap PASSED [ 97%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_empty_text PASSED [ 98%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_missing_chunks PASSED [ 98%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_with_newlines PASSED [ 99%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_indices_sequential PASSED [ 99%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_custom_chunk_size_and_overlap PASSED [100%]
+
+=================================== FAILURES ===================================
+_ TestAdapterReplaceabilityProperties.test_property_16_adapter_replaceability __
+tests/property/test_properties_adapters.py:144: in test_property_16_adapter_replaceability
+    mock_content=st.text(min_size=100, max_size=2000),
+           ^^^^^^^
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_16_adapter_replaceability. 459 of 459 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+_ TestDocumentProcessorProperties.test_property_1_pdf_text_extraction_completeness _
+tests/property/test_properties_document.py:23: in test_property_1_pdf_text_extraction_completeness
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_text_extraction_completeness. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+__ TestDocumentProcessorProperties.test_property_1_pdf_extraction_consistency __
+tests/property/test_properties_document.py:96: in test_property_1_pdf_extraction_consistency
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_extraction_consistency. 4 of 4 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+__ TestDocumentProcessorProperties.test_property_1_pdf_structure_preservation __
+tests/property/test_properties_document.py:142: in test_property_1_pdf_structure_preservation
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_structure_preservation. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+___________ TestDocumentProcessor.test_validate_file_path_valid_pdf ____________
+tests/unit/test_document_processor.py:63: in test_validate_file_path_valid_pdf
+    assert result.is_valid
+E   AssertionError: assert False
+E    +  where False = ValidationResult(is_valid=False, error_message='Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd').is_valid
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd
+____________ TestDocumentProcessor.test_load_document_corrupted_pdf ____________
+tests/unit/test_document_processor.py:85: in test_load_document_corrupted_pdf
+    processor.load_document(str(test_file))
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+____________ TestDocumentProcessor.test_load_document_empty_content ____________
+tests/unit/test_document_processor.py:99: in test_load_document_empty_content
+    processor.load_document(str(test_file))
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+_______________ TestDocumentProcessor.test_load_document_success _______________
+tests/unit/test_document_processor.py:114: in test_load_document_success
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+______ TestDocumentProcessor.test_load_document_preserves_text_structure _______
+tests/unit/test_document_processor.py:144: in test_load_document_preserves_text_structure
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+________ TestDocumentProcessor.test_load_document_page_count_estimation ________
+tests/unit/test_document_processor.py:160: in test_load_document_page_count_estimation
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+_________ TestDocumentProcessor.test_load_document_minimum_page_count __________
+tests/unit/test_document_processor.py:175: in test_load_document_minimum_page_count
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+______ TestDocumentProcessor.test_document_processor_uses_injected_loader ______
+tests/unit/test_document_processor.py:189: in test_document_processor_uses_injected_loader
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+=============================== warnings summary ===============================
+../../../../../Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/_pytest/config/__init__.py:1428
+  /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/_pytest/config/__init__.py:1428: PytestConfigWarning: Unknown config option: hypothesis_profile
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.12.10-final-0 _______________
+
+Name                                       Stmts   Miss   Cover   Missing
+-------------------------------------------------------------------------
+adapters/__init__.py                           6      0 100.00%
+adapters/cli_adapter.py                      142     18  87.32%   106-107, 114-116, 162-166, 277-281, 310-312, 329-331
+adapters/faiss_adapter.py                     75      2  97.33%   177-178
+adapters/langchain_adapter.py                 38      3  92.11%   58-60
+adapters/ollama_adapter.py                    35     27  22.86%   36-52, 69-101, 110
+adapters/pypdf_adapter.py                     55      8  85.45%   60-65, 87-88, 113, 121-123
+adapters/sentence_transformer_adapter.py      47     10  78.72%   63, 70-72, 94-95, 109, 117-121
+core/__init__.py                               6      0 100.00%
+core/__version__.py                            5      5   0.00%   3-7
+core/answer_generator.py                      65      4  93.85%   81-83, 198
+core/config.py                                20      0 100.00%
+core/context_retriever.py                     28      0 100.00%
+core/document_processor.py                    58     15  74.14%   54-55, 67-68, 108-113, 136-149
+core/embedding_generator.py                   47      0 100.00%
+core/factory.py                              102     14  86.27%   53, 60, 69, 78, 168-169, 217-220, 249-252
+core/models.py                                56      0 100.00%
+core/query_handler.py                         32      0 100.00%
+core/rag_orchestrator.py                     137      7  94.89%   69-76, 113
+core/text_chunker.py                          96     14  85.42%   80-81, 103, 222-235, 242
+ports/__init__.py                              3      0 100.00%
+ports/inbound.py                               3      0 100.00%
+ports/outbound.py                              7      0 100.00%
+-------------------------------------------------------------------------
+TOTAL                                       1063    127  88.05%
+Coverage HTML written to dir htmlcov
+Coverage XML written to file coverage.xml
+=========================== short test summary info ============================
+FAILED tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_adapter_replaceability - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_16_adapter_replaceability. 459 of 459 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_text_extraction_completeness - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_text_extraction_completeness. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_extraction_consistency - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_extraction_consistency. 4 of 4 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_structure_preservation - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_structure_preservation. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_valid_pdf - AssertionError: assert False
+ +  where False = ValidationResult(is_valid=False, error_message='Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd').is_valid
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_corrupted_pdf - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_empty_content - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_success - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_preserves_text_structure - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_page_count_estimation - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_minimum_page_count - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_document_processor_uses_injected_loader - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+======= 12 failed, 190 passed, 6 skipped, 4 warnings in 78.69s (0:01:18) =======
+Error: Process completed with exit code 1.
+
+Run pytest --cov=core --cov=ports --cov=adapters --cov-report=xml --cov-report=term-missing
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.0.2, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.12.13/x64/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'rag_system' -> database=None, print_blob=True, derandomize=True, deadline=timedelta(milliseconds=5000), suppress_health_check=(HealthCheck.too_slow,)
+rootdir: /home/runner/work/swiggy-rag-system/swiggy-rag-system
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+testpaths: tests
+plugins: anyio-4.12.1, mock-3.15.1, hypothesis-6.151.9, cov-7.0.0, langsmith-0.7.17
+collecting ... collected 208 items
+
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_complete_workflow_ingest_and_query SKIPPED [  0%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_persistence_workflow_save_and_load SKIPPED [  0%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_multiple_queries_on_same_document SKIPPED [  1%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_query_with_no_relevant_context SKIPPED [  1%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_ingest_nonexistent_file PASSED [  2%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_ingest_corrupted_pdf PASSED [  2%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_query_before_ingestion PASSED [  3%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_query_with_empty_question PASSED [  3%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_load_nonexistent_index PASSED [  4%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_recovery_after_failed_ingestion PASSED [  4%]
+tests/integration/test_end_to_end.py::TestContextRetrieval::test_retrieved_chunks_have_metadata SKIPPED [  5%]
+tests/integration/test_end_to_end.py::TestContextRetrieval::test_retrieved_chunks_ranked_by_similarity SKIPPED [  5%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_adapter_replaceability FAILED [  6%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_embedding_model_replaceability PASSED [  6%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_vector_store_replaceability PASSED [  7%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_llm_replaceability PASSED [  7%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_completeness PASSED [  8%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_with_scores PASSED [  8%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_not_found PASSED [  9%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_consistency PASSED [  9%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_text_extraction_completeness FAILED [ 10%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_extraction_consistency FAILED [ 10%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_structure_preservation FAILED [ 11%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_chunk_structure_consistency PASSED [ 11%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_chunk_overlap_consistency PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_short_text_handling PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_3_chunk_metadata_completeness PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_4_chunk_sentence_completeness PASSED [ 13%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_17_chunking_content_preservation PASSED [ 13%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_5_embedding_generation_success PASSED [ 14%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_6_batch_embedding_completeness PASSED [ 14%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_7_embedding_dimensionality_consistency PASSED [ 15%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation PASSED [ 15%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation_empty_rejection PASSED [ 16%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation_consistency PASSED [ 16%]
+tests/property/test_properties_query.py::TestContextRetrieverProperties::test_property_12_context_retrieval_completeness PASSED [ 17%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_with_context PASSED [ 17%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_empty_context PASSED [ 18%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_not_found_response PASSED [ 18%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_14_answer_context_reference PASSED [ 19%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_14_answer_context_reference_no_reference PASSED [ 19%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_8_vector_store_retrieval_round_trip PASSED [ 20%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_9_vector_store_persistence_round_trip PASSED [ 20%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_10_top_k_retrieval_correctness PASSED [ 21%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_exists PASSED [ 21%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_not_exists PASSED [ 22%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_not_pdf PASSED [ 22%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_is_directory PASSED [ 23%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_success PASSED [ 23%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_file_not_found PASSED [ 24%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_corrupted PASSED [ 24%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_empty_content PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_init_with_model_name PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_single_text PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_empty_text PASSED [ 26%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_batch PASSED [ 26%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_batch_empty_list PASSED [ 27%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_get_embedding_dimension PASSED [ 27%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_init_with_dimension PASSED [ 28%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings PASSED [ 28%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings_dimension_mismatch PASSED [ 29%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings_count_mismatch PASSED [ 29%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_search PASSED        [ 30%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_search_empty_index PASSED [ 30%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_save_and_load_index PASSED [ 31%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_load_index_file_not_found PASSED [ 31%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_get_index_size PASSED [ 32%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_with_api_key PASSED [ 32%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_without_api_key_from_env PASSED [ 33%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_without_api_key_raises_error PASSED [ 33%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_success PASSED [ 34%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_rate_limit PASSED [ 34%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_api_failure PASSED [ 35%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_get_model_name PASSED [ 35%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_init_with_orchestrator PASSED [ 36%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_ingest_command_success PASSED [ 36%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_ingest_command_failure PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_success PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_not_found PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_with_load_index PASSED [ 38%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_invalid_command PASSED [ 38%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_keyboard_interrupt PASSED [ 39%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_init_with_llm_port PASSED [ 39%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_with_sufficient_context PASSED [ 40%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_with_insufficient_context PASSED [ 40%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_includes_supporting_chunks PASSED [ 41%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_llm_returns_not_found PASSED [ 41%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_true PASSED [ 42%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_false PASSED [ 42%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_empty_context PASSED [ 43%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_empty_answer PASSED [ 43%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_high PASSED [ 44%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_medium PASSED [ 44%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_low PASSED [ 45%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_anti_hallucination_prompt_used PASSED [ 45%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_context_text_preparation PASSED [ 46%]
+tests/unit/test_config.py::TestRAGConfig::test_default_config PASSED     [ 46%]
+tests/unit/test_config.py::TestRAGConfig::test_custom_config PASSED      [ 47%]
+tests/unit/test_config.py::TestRAGConfig::test_from_env_with_defaults PASSED [ 47%]
+tests/unit/test_config.py::TestRAGConfig::test_from_env_with_custom_values PASSED [ 48%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_init_with_defaults PASSED [ 48%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_init_with_custom_parameters PASSED [ 49%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_top_5_chunks PASSED [ 49%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_similarity_threshold_filtering PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_empty_when_no_chunks_above_threshold PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_includes_chunk_text_and_metadata PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_custom_top_k PASSED [ 51%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_custom_similarity_threshold PASSED [ 51%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_sorted_by_similarity PASSED [ 52%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_empty_search_results PASSED [ 52%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_init_with_document_loader PASSED [ 53%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_empty_path PASSED [ 53%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_file_not_found PASSED [ 54%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_not_pdf PASSED [ 54%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_valid_pdf FAILED [ 55%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_file_not_found PASSED [ 55%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_corrupted_pdf FAILED [ 56%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_empty_content FAILED [ 56%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_success FAILED [ 57%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_preserves_text_structure FAILED [ 57%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_page_count_estimation FAILED [ 58%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_minimum_page_count FAILED [ 58%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_document_processor_uses_injected_loader FAILED [ 59%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_init_with_embedding_model PASSED [ 59%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_success PASSED [ 60%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_empty_text PASSED [ 60%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_whitespace_only PASSED [ 61%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_model_failure PASSED [ 61%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_success PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_empty_list PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_with_empty_text PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_all_empty PASSED [ 63%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_model_failure PASSED [ 63%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_embedding_is_numerical_vector PASSED [ 64%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_valid_configuration PASSED [ 64%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_missing_api_key PASSED [ 65%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_empty_embedding_model_name PASSED [ 65%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_invalid_chunk_size PASSED [ 66%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_chunk_overlap_greater_than_size PASSED [ 66%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_invalid_similarity_threshold PASSED [ 67%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_with_valid_config PASSED [ 67%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_from_env PASSED [ 68%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_with_invalid_config PASSED [ 68%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_skip_validation PASSED [ 69%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_adapter_initialization_failure PASSED [ 69%]
+tests/unit/test_models.py::TestDocumentContent::test_create_document_content PASSED [ 70%]
+tests/unit/test_models.py::TestChunk::test_create_chunk_with_metadata PASSED [ 70%]
+tests/unit/test_models.py::TestEmbedding::test_create_embedding PASSED   [ 71%]
+tests/unit/test_models.py::TestAnswer::test_answer_has_answer_true PASSED [ 71%]
+tests/unit/test_models.py::TestAnswer::test_answer_has_answer_false PASSED [ 72%]
+tests/unit/test_models.py::TestValidationResult::test_valid_result PASSED [ 72%]
+tests/unit/test_models.py::TestValidationResult::test_invalid_result PASSED [ 73%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_init_with_embedding_generator PASSED [ 73%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_valid PASSED [ 74%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_empty_string PASSED [ 74%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_none PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_whitespace_only PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_with_leading_trailing_whitespace PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_success PASSED [ 76%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_empty_raises_error PASSED [ 76%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_whitespace_raises_error PASSED [ 77%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_embedding_failure PASSED [ 77%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_generates_embedding PASSED [ 78%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_init_with_all_components PASSED [ 78%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_complete_workflow_success PASSED [ 79%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_without_index_path PASSED [ 79%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_file_not_found_error PASSED [ 80%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_validation_error PASSED [ 80%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_unexpected_error PASSED [ 81%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_complete_workflow_success PASSED [ 81%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_system_not_ready PASSED [ 82%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_validation_error PASSED [ 82%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_unexpected_error PASSED [ 83%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_no_context_retrieved PASSED [ 83%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_with_embeddings PASSED [ 84%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_empty_store PASSED [ 84%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_error_handling PASSED [ 85%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_with_provided_path PASSED [ 85%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_with_default_path PASSED [ 86%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_no_path_provided PASSED [ 86%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_file_not_found PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_unexpected_error PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_document_processor PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_text_chunker PASSED [ 88%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_embedding_generator PASSED [ 88%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_vector_store PASSED [ 89%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_query_handler PASSED [ 89%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_context_retriever PASSED [ 90%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_answer_generator PASSED [ 90%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_with_default_parameters PASSED [ 91%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_shorter_than_chunk_size PASSED [ 91%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_with_exact_chunk_size PASSED [ 92%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_exact_1000_character_chunks PASSED [ 92%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_overlap PASSED [ 93%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_200_character_overlap PASSED [ 93%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_sentence_boundary_preservation PASSED [ 94%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_sentence_boundary_preservation_detailed PASSED [ 94%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_metadata_completeness PASSED [ 95%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_empty_text PASSED [ 95%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_text_with_no_sentence_boundaries PASSED [ 96%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_no_sentence_boundary_handling PASSED [ 96%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_complete PASSED [ 97%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_with_overlap PASSED [ 97%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_empty_text PASSED [ 98%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_missing_chunks PASSED [ 98%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_with_newlines PASSED [ 99%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_indices_sequential PASSED [ 99%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_custom_chunk_size_and_overlap PASSED [100%]
+
+=================================== FAILURES ===================================
+_ TestAdapterReplaceabilityProperties.test_property_16_adapter_replaceability __
+tests/property/test_properties_adapters.py:144: in test_property_16_adapter_replaceability
+    mock_content=st.text(min_size=100, max_size=2000),
+           ^^^^^^^
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_16_adapter_replaceability. 459 of 459 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+_ TestDocumentProcessorProperties.test_property_1_pdf_text_extraction_completeness _
+tests/property/test_properties_document.py:23: in test_property_1_pdf_text_extraction_completeness
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_text_extraction_completeness. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+__ TestDocumentProcessorProperties.test_property_1_pdf_extraction_consistency __
+tests/property/test_properties_document.py:96: in test_property_1_pdf_extraction_consistency
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_extraction_consistency. 4 of 4 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+__ TestDocumentProcessorProperties.test_property_1_pdf_structure_preservation __
+tests/property/test_properties_document.py:142: in test_property_1_pdf_structure_preservation
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_structure_preservation. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+___________ TestDocumentProcessor.test_validate_file_path_valid_pdf ____________
+tests/unit/test_document_processor.py:63: in test_validate_file_path_valid_pdf
+    assert result.is_valid
+E   AssertionError: assert False
+E    +  where False = ValidationResult(is_valid=False, error_message='Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd').is_valid
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd
+____________ TestDocumentProcessor.test_load_document_corrupted_pdf ____________
+tests/unit/test_document_processor.py:85: in test_load_document_corrupted_pdf
+    processor.load_document(str(test_file))
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+____________ TestDocumentProcessor.test_load_document_empty_content ____________
+tests/unit/test_document_processor.py:99: in test_load_document_empty_content
+    processor.load_document(str(test_file))
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+_______________ TestDocumentProcessor.test_load_document_success _______________
+tests/unit/test_document_processor.py:114: in test_load_document_success
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+______ TestDocumentProcessor.test_load_document_preserves_text_structure _______
+tests/unit/test_document_processor.py:144: in test_load_document_preserves_text_structure
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+________ TestDocumentProcessor.test_load_document_page_count_estimation ________
+tests/unit/test_document_processor.py:160: in test_load_document_page_count_estimation
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+_________ TestDocumentProcessor.test_load_document_minimum_page_count __________
+tests/unit/test_document_processor.py:175: in test_load_document_minimum_page_count
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+______ TestDocumentProcessor.test_document_processor_uses_injected_loader ______
+tests/unit/test_document_processor.py:189: in test_document_processor_uses_injected_loader
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+=============================== warnings summary ===============================
+../../../../../opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/_pytest/config/__init__.py:1428
+  /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/_pytest/config/__init__.py:1428: PytestConfigWarning: Unknown config option: hypothesis_profile
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.13-final-0 _______________
+
+Name                                       Stmts   Miss   Cover   Missing
+-------------------------------------------------------------------------
+adapters/__init__.py                           6      0 100.00%
+adapters/cli_adapter.py                      142     18  87.32%   106-107, 114-116, 162-166, 277-281, 310-312, 329-331
+adapters/faiss_adapter.py                     75      2  97.33%   177-178
+adapters/langchain_adapter.py                 38      3  92.11%   58-60
+adapters/ollama_adapter.py                    35     27  22.86%   36-52, 69-101, 110
+adapters/pypdf_adapter.py                     55      8  85.45%   60-65, 87-88, 113, 121-123
+adapters/sentence_transformer_adapter.py      47     10  78.72%   63, 70-72, 94-95, 109, 117-121
+core/__init__.py                               6      0 100.00%
+core/__version__.py                            5      5   0.00%   3-7
+core/answer_generator.py                      65      4  93.85%   81-83, 198
+core/config.py                                20      0 100.00%
+core/context_retriever.py                     28      0 100.00%
+core/document_processor.py                    58     15  74.14%   54-55, 67-68, 108-113, 136-149
+core/embedding_generator.py                   47      0 100.00%
+core/factory.py                              102     14  86.27%   53, 60, 69, 78, 168-169, 217-220, 249-252
+core/models.py                                56      0 100.00%
+core/query_handler.py                         32      0 100.00%
+core/rag_orchestrator.py                     137      7  94.89%   69-76, 113
+core/text_chunker.py                          96     14  85.42%   80-81, 103, 222-235, 242
+ports/__init__.py                              3      0 100.00%
+ports/inbound.py                               3      0 100.00%
+ports/outbound.py                              7      0 100.00%
+-------------------------------------------------------------------------
+TOTAL                                       1063    127  88.05%
+Coverage HTML written to dir htmlcov
+Coverage XML written to file coverage.xml
+=========================== short test summary info ============================
+FAILED tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_adapter_replaceability - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_16_adapter_replaceability. 459 of 459 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_text_extraction_completeness - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_text_extraction_completeness. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_extraction_consistency - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_extraction_consistency. 4 of 4 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_structure_preservation - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_structure_preservation. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_valid_pdf - AssertionError: assert False
+ +  where False = ValidationResult(is_valid=False, error_message='Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd').is_valid
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_corrupted_pdf - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_empty_content - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_success - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_preserves_text_structure - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_page_count_estimation - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_minimum_page_count - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_document_processor_uses_injected_loader - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+======= 12 failed, 190 passed, 6 skipped, 4 warnings in 78.67s (0:01:18) =======
+Error: Process completed with exit code 1.
+
+Run pytest --cov=core --cov=ports --cov=adapters --cov-report=xml --cov-report=term-missing
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.0.2, pluggy-1.6.0 -- /Library/Frameworks/Python.framework/Versions/3.13/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'rag_system' -> database=None, print_blob=True, derandomize=True, deadline=timedelta(milliseconds=5000), suppress_health_check=(HealthCheck.too_slow,)
+rootdir: /Users/runner/work/swiggy-rag-system/swiggy-rag-system
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+testpaths: tests
+plugins: anyio-4.12.1, mock-3.15.1, hypothesis-6.151.9, langsmith-0.7.17, cov-7.0.0
+collecting ... collected 208 items
+
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_complete_workflow_ingest_and_query SKIPPED [  0%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_persistence_workflow_save_and_load SKIPPED [  0%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_multiple_queries_on_same_document SKIPPED [  1%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_query_with_no_relevant_context SKIPPED [  1%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_ingest_nonexistent_file PASSED [  2%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_ingest_corrupted_pdf PASSED [  2%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_query_before_ingestion PASSED [  3%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_query_with_empty_question PASSED [  3%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_load_nonexistent_index PASSED [  4%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_recovery_after_failed_ingestion PASSED [  4%]
+tests/integration/test_end_to_end.py::TestContextRetrieval::test_retrieved_chunks_have_metadata SKIPPED [  5%]
+tests/integration/test_end_to_end.py::TestContextRetrieval::test_retrieved_chunks_ranked_by_similarity SKIPPED [  5%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_adapter_replaceability FAILED [  6%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_embedding_model_replaceability PASSED [  6%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_vector_store_replaceability PASSED [  7%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_llm_replaceability PASSED [  7%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_completeness PASSED [  8%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_with_scores PASSED [  8%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_not_found PASSED [  9%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_consistency PASSED [  9%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_text_extraction_completeness FAILED [ 10%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_extraction_consistency FAILED [ 10%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_structure_preservation FAILED [ 11%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_chunk_structure_consistency PASSED [ 11%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_chunk_overlap_consistency PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_short_text_handling PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_3_chunk_metadata_completeness PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_4_chunk_sentence_completeness PASSED [ 13%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_17_chunking_content_preservation PASSED [ 13%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_5_embedding_generation_success PASSED [ 14%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_6_batch_embedding_completeness PASSED [ 14%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_7_embedding_dimensionality_consistency PASSED [ 15%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation PASSED [ 15%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation_empty_rejection PASSED [ 16%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation_consistency PASSED [ 16%]
+tests/property/test_properties_query.py::TestContextRetrieverProperties::test_property_12_context_retrieval_completeness PASSED [ 17%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_with_context PASSED [ 17%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_empty_context PASSED [ 18%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_not_found_response PASSED [ 18%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_14_answer_context_reference PASSED [ 19%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_14_answer_context_reference_no_reference PASSED [ 19%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_8_vector_store_retrieval_round_trip PASSED [ 20%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_9_vector_store_persistence_round_trip PASSED [ 20%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_10_top_k_retrieval_correctness PASSED [ 21%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_exists PASSED [ 21%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_not_exists PASSED [ 22%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_not_pdf PASSED [ 22%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_is_directory PASSED [ 23%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_success PASSED [ 23%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_file_not_found PASSED [ 24%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_corrupted PASSED [ 24%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_empty_content PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_init_with_model_name PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_single_text PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_empty_text PASSED [ 26%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_batch PASSED [ 26%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_batch_empty_list PASSED [ 27%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_get_embedding_dimension PASSED [ 27%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_init_with_dimension PASSED [ 28%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings PASSED [ 28%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings_dimension_mismatch PASSED [ 29%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings_count_mismatch PASSED [ 29%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_search PASSED        [ 30%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_search_empty_index PASSED [ 30%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_save_and_load_index PASSED [ 31%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_load_index_file_not_found PASSED [ 31%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_get_index_size PASSED [ 32%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_with_api_key PASSED [ 32%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_without_api_key_from_env PASSED [ 33%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_without_api_key_raises_error PASSED [ 33%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_success PASSED [ 34%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_rate_limit PASSED [ 34%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_api_failure PASSED [ 35%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_get_model_name PASSED [ 35%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_init_with_orchestrator PASSED [ 36%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_ingest_command_success PASSED [ 36%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_ingest_command_failure PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_success PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_not_found PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_with_load_index PASSED [ 38%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_invalid_command PASSED [ 38%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_keyboard_interrupt PASSED [ 39%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_init_with_llm_port PASSED [ 39%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_with_sufficient_context PASSED [ 40%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_with_insufficient_context PASSED [ 40%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_includes_supporting_chunks PASSED [ 41%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_llm_returns_not_found PASSED [ 41%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_true PASSED [ 42%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_false PASSED [ 42%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_empty_context PASSED [ 43%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_empty_answer PASSED [ 43%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_high PASSED [ 44%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_medium PASSED [ 44%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_low PASSED [ 45%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_anti_hallucination_prompt_used PASSED [ 45%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_context_text_preparation PASSED [ 46%]
+tests/unit/test_config.py::TestRAGConfig::test_default_config PASSED     [ 46%]
+tests/unit/test_config.py::TestRAGConfig::test_custom_config PASSED      [ 47%]
+tests/unit/test_config.py::TestRAGConfig::test_from_env_with_defaults PASSED [ 47%]
+tests/unit/test_config.py::TestRAGConfig::test_from_env_with_custom_values PASSED [ 48%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_init_with_defaults PASSED [ 48%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_init_with_custom_parameters PASSED [ 49%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_top_5_chunks PASSED [ 49%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_similarity_threshold_filtering PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_empty_when_no_chunks_above_threshold PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_includes_chunk_text_and_metadata PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_custom_top_k PASSED [ 51%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_custom_similarity_threshold PASSED [ 51%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_sorted_by_similarity PASSED [ 52%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_empty_search_results PASSED [ 52%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_init_with_document_loader PASSED [ 53%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_empty_path PASSED [ 53%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_file_not_found PASSED [ 54%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_not_pdf PASSED [ 54%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_valid_pdf FAILED [ 55%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_file_not_found PASSED [ 55%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_corrupted_pdf FAILED [ 56%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_empty_content FAILED [ 56%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_success FAILED [ 57%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_preserves_text_structure FAILED [ 57%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_page_count_estimation FAILED [ 58%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_minimum_page_count FAILED [ 58%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_document_processor_uses_injected_loader FAILED [ 59%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_init_with_embedding_model PASSED [ 59%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_success PASSED [ 60%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_empty_text PASSED [ 60%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_whitespace_only PASSED [ 61%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_model_failure PASSED [ 61%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_success PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_empty_list PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_with_empty_text PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_all_empty PASSED [ 63%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_model_failure PASSED [ 63%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_embedding_is_numerical_vector PASSED [ 64%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_valid_configuration PASSED [ 64%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_missing_api_key PASSED [ 65%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_empty_embedding_model_name PASSED [ 65%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_invalid_chunk_size PASSED [ 66%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_chunk_overlap_greater_than_size PASSED [ 66%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_invalid_similarity_threshold PASSED [ 67%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_with_valid_config PASSED [ 67%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_from_env PASSED [ 68%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_with_invalid_config PASSED [ 68%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_skip_validation PASSED [ 69%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_adapter_initialization_failure PASSED [ 69%]
+tests/unit/test_models.py::TestDocumentContent::test_create_document_content PASSED [ 70%]
+tests/unit/test_models.py::TestChunk::test_create_chunk_with_metadata PASSED [ 70%]
+tests/unit/test_models.py::TestEmbedding::test_create_embedding PASSED   [ 71%]
+tests/unit/test_models.py::TestAnswer::test_answer_has_answer_true PASSED [ 71%]
+tests/unit/test_models.py::TestAnswer::test_answer_has_answer_false PASSED [ 72%]
+tests/unit/test_models.py::TestValidationResult::test_valid_result PASSED [ 72%]
+tests/unit/test_models.py::TestValidationResult::test_invalid_result PASSED [ 73%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_init_with_embedding_generator PASSED [ 73%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_valid PASSED [ 74%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_empty_string PASSED [ 74%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_none PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_whitespace_only PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_with_leading_trailing_whitespace PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_success PASSED [ 76%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_empty_raises_error PASSED [ 76%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_whitespace_raises_error PASSED [ 77%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_embedding_failure PASSED [ 77%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_generates_embedding PASSED [ 78%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_init_with_all_components PASSED [ 78%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_complete_workflow_success PASSED [ 79%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_without_index_path PASSED [ 79%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_file_not_found_error PASSED [ 80%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_validation_error PASSED [ 80%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_unexpected_error PASSED [ 81%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_complete_workflow_success PASSED [ 81%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_system_not_ready PASSED [ 82%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_validation_error PASSED [ 82%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_unexpected_error PASSED [ 83%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_no_context_retrieved PASSED [ 83%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_with_embeddings PASSED [ 84%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_empty_store PASSED [ 84%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_error_handling PASSED [ 85%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_with_provided_path PASSED [ 85%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_with_default_path PASSED [ 86%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_no_path_provided PASSED [ 86%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_file_not_found PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_unexpected_error PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_document_processor PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_text_chunker PASSED [ 88%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_embedding_generator PASSED [ 88%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_vector_store PASSED [ 89%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_query_handler PASSED [ 89%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_context_retriever PASSED [ 90%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_answer_generator PASSED [ 90%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_with_default_parameters PASSED [ 91%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_shorter_than_chunk_size PASSED [ 91%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_with_exact_chunk_size PASSED [ 92%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_exact_1000_character_chunks PASSED [ 92%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_overlap PASSED [ 93%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_200_character_overlap PASSED [ 93%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_sentence_boundary_preservation PASSED [ 94%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_sentence_boundary_preservation_detailed PASSED [ 94%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_metadata_completeness PASSED [ 95%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_empty_text PASSED [ 95%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_text_with_no_sentence_boundaries PASSED [ 96%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_no_sentence_boundary_handling PASSED [ 96%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_complete PASSED [ 97%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_with_overlap PASSED [ 97%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_empty_text PASSED [ 98%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_missing_chunks PASSED [ 98%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_with_newlines PASSED [ 99%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_indices_sequential PASSED [ 99%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_custom_chunk_size_and_overlap PASSED [100%]
+
+=================================== FAILURES ===================================
+_ TestAdapterReplaceabilityProperties.test_property_16_adapter_replaceability __
+tests/property/test_properties_adapters.py:144: in test_property_16_adapter_replaceability
+    mock_content=st.text(min_size=100, max_size=2000),
+           ^^^^^^^
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_16_adapter_replaceability. 459 of 459 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+_ TestDocumentProcessorProperties.test_property_1_pdf_text_extraction_completeness _
+tests/property/test_properties_document.py:23: in test_property_1_pdf_text_extraction_completeness
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_text_extraction_completeness. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+__ TestDocumentProcessorProperties.test_property_1_pdf_extraction_consistency __
+tests/property/test_properties_document.py:96: in test_property_1_pdf_extraction_consistency
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_extraction_consistency. 4 of 4 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+__ TestDocumentProcessorProperties.test_property_1_pdf_structure_preservation __
+tests/property/test_properties_document.py:142: in test_property_1_pdf_structure_preservation
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_structure_preservation. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+___________ TestDocumentProcessor.test_validate_file_path_valid_pdf ____________
+tests/unit/test_document_processor.py:63: in test_validate_file_path_valid_pdf
+    assert result.is_valid
+E   AssertionError: assert False
+E    +  where False = ValidationResult(is_valid=False, error_message='Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd').is_valid
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd
+____________ TestDocumentProcessor.test_load_document_corrupted_pdf ____________
+tests/unit/test_document_processor.py:85: in test_load_document_corrupted_pdf
+    processor.load_document(str(test_file))
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+____________ TestDocumentProcessor.test_load_document_empty_content ____________
+tests/unit/test_document_processor.py:99: in test_load_document_empty_content
+    processor.load_document(str(test_file))
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+_______________ TestDocumentProcessor.test_load_document_success _______________
+tests/unit/test_document_processor.py:114: in test_load_document_success
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+______ TestDocumentProcessor.test_load_document_preserves_text_structure _______
+tests/unit/test_document_processor.py:144: in test_load_document_preserves_text_structure
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+________ TestDocumentProcessor.test_load_document_page_count_estimation ________
+tests/unit/test_document_processor.py:160: in test_load_document_page_count_estimation
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+_________ TestDocumentProcessor.test_load_document_minimum_page_count __________
+tests/unit/test_document_processor.py:175: in test_load_document_minimum_page_count
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+______ TestDocumentProcessor.test_document_processor_uses_injected_loader ______
+tests/unit/test_document_processor.py:189: in test_document_processor_uses_injected_loader
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+=============================== warnings summary ===============================
+../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/_pytest/config/__init__.py:1428
+  /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/_pytest/config/__init__.py:1428: PytestConfigWarning: Unknown config option: hypothesis_profile
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.13.12-final-0 _______________
+
+Name                                       Stmts   Miss   Cover   Missing
+-------------------------------------------------------------------------
+adapters/__init__.py                           6      0 100.00%
+adapters/cli_adapter.py                      142     18  87.32%   106-107, 114-116, 162-166, 277-281, 310-312, 329-331
+adapters/faiss_adapter.py                     75      2  97.33%   177-178
+adapters/langchain_adapter.py                 38      3  92.11%   58-60
+adapters/ollama_adapter.py                    35     27  22.86%   36-52, 69-101, 110
+adapters/pypdf_adapter.py                     55      8  85.45%   60-65, 87-88, 113, 121-123
+adapters/sentence_transformer_adapter.py      47     10  78.72%   63, 70-72, 94-95, 109, 117-121
+core/__init__.py                               6      0 100.00%
+core/__version__.py                            5      5   0.00%   3-7
+core/answer_generator.py                      65      4  93.85%   81-83, 198
+core/config.py                                20      0 100.00%
+core/context_retriever.py                     28      0 100.00%
+core/document_processor.py                    58     15  74.14%   54-55, 67-68, 108-113, 136-149
+core/embedding_generator.py                   47      0 100.00%
+core/factory.py                              102     14  86.27%   53, 60, 69, 78, 168-169, 217-220, 249-252
+core/models.py                                56      0 100.00%
+core/query_handler.py                         32      0 100.00%
+core/rag_orchestrator.py                     137      7  94.89%   69-76, 113
+core/text_chunker.py                          96     14  85.42%   80-81, 103, 222-235, 242
+ports/__init__.py                              3      0 100.00%
+ports/inbound.py                               3      0 100.00%
+ports/outbound.py                              7      0 100.00%
+-------------------------------------------------------------------------
+TOTAL                                       1063    127  88.05%
+Coverage HTML written to dir htmlcov
+Coverage XML written to file coverage.xml
+=========================== short test summary info ============================
+FAILED tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_adapter_replaceability - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_16_adapter_replaceability. 459 of 459 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_text_extraction_completeness - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_text_extraction_completeness. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_extraction_consistency - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_extraction_consistency. 4 of 4 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_structure_preservation - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_structure_preservation. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_valid_pdf - AssertionError: assert False
+ +  where False = ValidationResult(is_valid=False, error_message='Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd').is_valid
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_corrupted_pdf - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_empty_content - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_success - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_preserves_text_structure - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_page_count_estimation - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_minimum_page_count - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_document_processor_uses_injected_loader - FileNotFoundError: Error: File is not a PDF: /private/var/folders/t5/f77_gwnj6p95qxy9py3fckx00000gn/T/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+======= 12 failed, 190 passed, 6 skipped, 4 warnings in 99.48s (0:01:39) =======
+Error: Process completed with exit code 1.
+Run pytest --cov=core --cov=ports --cov=adapters --cov-report=xml --cov-report=term-missing
+============================= test session starts ==============================
+platform linux -- Python 3.13.12, pytest-9.0.2, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.13.12/x64/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'rag_system' -> database=None, print_blob=True, derandomize=True, deadline=timedelta(milliseconds=5000), suppress_health_check=(HealthCheck.too_slow,)
+rootdir: /home/runner/work/swiggy-rag-system/swiggy-rag-system
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+testpaths: tests
+plugins: anyio-4.12.1, mock-3.15.1, hypothesis-6.151.9, cov-7.0.0, langsmith-0.7.17
+collecting ... collected 208 items
+
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_complete_workflow_ingest_and_query SKIPPED [  0%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_persistence_workflow_save_and_load SKIPPED [  0%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_multiple_queries_on_same_document SKIPPED [  1%]
+tests/integration/test_end_to_end.py::TestEndToEndWorkflow::test_query_with_no_relevant_context SKIPPED [  1%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_ingest_nonexistent_file PASSED [  2%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_ingest_corrupted_pdf PASSED [  2%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_query_before_ingestion PASSED [  3%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_query_with_empty_question PASSED [  3%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_load_nonexistent_index PASSED [  4%]
+tests/integration/test_end_to_end.py::TestErrorRecoveryScenarios::test_recovery_after_failed_ingestion PASSED [  4%]
+tests/integration/test_end_to_end.py::TestContextRetrieval::test_retrieved_chunks_have_metadata SKIPPED [  5%]
+tests/integration/test_end_to_end.py::TestContextRetrieval::test_retrieved_chunks_ranked_by_similarity SKIPPED [  5%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_adapter_replaceability FAILED [  6%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_embedding_model_replaceability PASSED [  6%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_vector_store_replaceability PASSED [  7%]
+tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_llm_replaceability PASSED [  7%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_completeness PASSED [  8%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_with_scores PASSED [  8%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_not_found PASSED [  9%]
+tests/property/test_properties_cli.py::TestCLIAdapterProperties::test_property_15_cli_display_consistency PASSED [  9%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_text_extraction_completeness FAILED [ 10%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_extraction_consistency FAILED [ 10%]
+tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_structure_preservation FAILED [ 11%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_chunk_structure_consistency PASSED [ 11%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_chunk_overlap_consistency PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_2_short_text_handling PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_3_chunk_metadata_completeness PASSED [ 12%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_4_chunk_sentence_completeness PASSED [ 13%]
+tests/property/test_properties_document.py::TestTextChunkerProperties::test_property_17_chunking_content_preservation PASSED [ 13%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_5_embedding_generation_success PASSED [ 14%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_6_batch_embedding_completeness PASSED [ 14%]
+tests/property/test_properties_embeddings.py::TestEmbeddingGeneratorProperties::test_property_7_embedding_dimensionality_consistency PASSED [ 15%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation PASSED [ 15%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation_empty_rejection PASSED [ 16%]
+tests/property/test_properties_query.py::TestQueryHandlerProperties::test_property_11_query_validation_consistency PASSED [ 16%]
+tests/property/test_properties_query.py::TestContextRetrieverProperties::test_property_12_context_retrieval_completeness PASSED [ 17%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_with_context PASSED [ 17%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_empty_context PASSED [ 18%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_13_answer_generation_not_found_response PASSED [ 18%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_14_answer_context_reference PASSED [ 19%]
+tests/property/test_properties_query.py::TestAnswerGeneratorProperties::test_property_14_answer_context_reference_no_reference PASSED [ 19%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_8_vector_store_retrieval_round_trip PASSED [ 20%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_9_vector_store_persistence_round_trip PASSED [ 20%]
+tests/property/test_properties_vector_store.py::TestVectorStoreProperties::test_property_10_top_k_retrieval_correctness PASSED [ 21%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_exists PASSED [ 21%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_not_exists PASSED [ 22%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_not_pdf PASSED [ 22%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_validate_file_is_directory PASSED [ 23%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_success PASSED [ 23%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_file_not_found PASSED [ 24%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_corrupted PASSED [ 24%]
+tests/unit/test_adapters.py::TestPyPDFAdapter::test_load_pdf_empty_content PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_init_with_model_name PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_single_text PASSED [ 25%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_empty_text PASSED [ 26%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_batch PASSED [ 26%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_encode_batch_empty_list PASSED [ 27%]
+tests/unit/test_adapters.py::TestSentenceTransformerAdapter::test_get_embedding_dimension PASSED [ 27%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_init_with_dimension PASSED [ 28%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings PASSED [ 28%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings_dimension_mismatch PASSED [ 29%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_add_embeddings_count_mismatch PASSED [ 29%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_search PASSED        [ 30%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_search_empty_index PASSED [ 30%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_save_and_load_index PASSED [ 31%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_load_index_file_not_found PASSED [ 31%]
+tests/unit/test_adapters.py::TestFAISSAdapter::test_get_index_size PASSED [ 32%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_with_api_key PASSED [ 32%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_without_api_key_from_env PASSED [ 33%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_init_without_api_key_raises_error PASSED [ 33%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_success PASSED [ 34%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_rate_limit PASSED [ 34%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_generate_answer_api_failure PASSED [ 35%]
+tests/unit/test_adapters.py::TestLangChainLLMAdapter::test_get_model_name PASSED [ 35%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_init_with_orchestrator PASSED [ 36%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_ingest_command_success PASSED [ 36%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_ingest_command_failure PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_success PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_not_found PASSED [ 37%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_query_command_with_load_index PASSED [ 38%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_invalid_command PASSED [ 38%]
+tests/unit/test_adapters.py::TestCLIAdapter::test_keyboard_interrupt PASSED [ 39%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_init_with_llm_port PASSED [ 39%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_with_sufficient_context PASSED [ 40%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_with_insufficient_context PASSED [ 40%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_includes_supporting_chunks PASSED [ 41%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_generate_answer_llm_returns_not_found PASSED [ 41%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_true PASSED [ 42%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_false PASSED [ 42%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_empty_context PASSED [ 43%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_validate_answer_from_context_empty_answer PASSED [ 43%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_high PASSED [ 44%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_medium PASSED [ 44%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_answer_confidence_low PASSED [ 45%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_anti_hallucination_prompt_used PASSED [ 45%]
+tests/unit/test_answer_generator.py::TestAnswerGenerator::test_context_text_preparation PASSED [ 46%]
+tests/unit/test_config.py::TestRAGConfig::test_default_config PASSED     [ 46%]
+tests/unit/test_config.py::TestRAGConfig::test_custom_config PASSED      [ 47%]
+tests/unit/test_config.py::TestRAGConfig::test_from_env_with_defaults PASSED [ 47%]
+tests/unit/test_config.py::TestRAGConfig::test_from_env_with_custom_values PASSED [ 48%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_init_with_defaults PASSED [ 48%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_init_with_custom_parameters PASSED [ 49%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_top_5_chunks PASSED [ 49%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_similarity_threshold_filtering PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_empty_when_no_chunks_above_threshold PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_includes_chunk_text_and_metadata PASSED [ 50%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_custom_top_k PASSED [ 51%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_custom_similarity_threshold PASSED [ 51%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_sorted_by_similarity PASSED [ 52%]
+tests/unit/test_context_retriever.py::TestContextRetriever::test_retrieve_context_empty_search_results PASSED [ 52%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_init_with_document_loader PASSED [ 53%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_empty_path PASSED [ 53%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_file_not_found PASSED [ 54%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_not_pdf PASSED [ 54%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_valid_pdf FAILED [ 55%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_file_not_found PASSED [ 55%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_corrupted_pdf FAILED [ 56%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_empty_content FAILED [ 56%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_success FAILED [ 57%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_preserves_text_structure FAILED [ 57%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_page_count_estimation FAILED [ 58%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_minimum_page_count FAILED [ 58%]
+tests/unit/test_document_processor.py::TestDocumentProcessor::test_document_processor_uses_injected_loader FAILED [ 59%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_init_with_embedding_model PASSED [ 59%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_success PASSED [ 60%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_empty_text PASSED [ 60%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_whitespace_only PASSED [ 61%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embedding_model_failure PASSED [ 61%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_success PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_empty_list PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_with_empty_text PASSED [ 62%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_all_empty PASSED [ 63%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_generate_embeddings_batch_model_failure PASSED [ 63%]
+tests/unit/test_embedding_generator.py::TestEmbeddingGenerator::test_embedding_is_numerical_vector PASSED [ 64%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_valid_configuration PASSED [ 64%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_missing_api_key PASSED [ 65%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_empty_embedding_model_name PASSED [ 65%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_invalid_chunk_size PASSED [ 66%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_chunk_overlap_greater_than_size PASSED [ 66%]
+tests/unit/test_factory.py::TestValidateConfiguration::test_invalid_similarity_threshold PASSED [ 67%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_with_valid_config PASSED [ 67%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_from_env PASSED [ 68%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_with_invalid_config PASSED [ 68%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_skip_validation PASSED [ 69%]
+tests/unit/test_factory.py::TestCreateRAGSystem::test_create_rag_system_adapter_initialization_failure PASSED [ 69%]
+tests/unit/test_models.py::TestDocumentContent::test_create_document_content PASSED [ 70%]
+tests/unit/test_models.py::TestChunk::test_create_chunk_with_metadata PASSED [ 70%]
+tests/unit/test_models.py::TestEmbedding::test_create_embedding PASSED   [ 71%]
+tests/unit/test_models.py::TestAnswer::test_answer_has_answer_true PASSED [ 71%]
+tests/unit/test_models.py::TestAnswer::test_answer_has_answer_false PASSED [ 72%]
+tests/unit/test_models.py::TestValidationResult::test_valid_result PASSED [ 72%]
+tests/unit/test_models.py::TestValidationResult::test_invalid_result PASSED [ 73%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_init_with_embedding_generator PASSED [ 73%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_valid PASSED [ 74%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_empty_string PASSED [ 74%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_none PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_whitespace_only PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_validate_question_with_leading_trailing_whitespace PASSED [ 75%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_success PASSED [ 76%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_empty_raises_error PASSED [ 76%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_whitespace_raises_error PASSED [ 77%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_embedding_failure PASSED [ 77%]
+tests/unit/test_query_handler.py::TestQueryHandler::test_process_question_generates_embedding PASSED [ 78%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_init_with_all_components PASSED [ 78%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_complete_workflow_success PASSED [ 79%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_without_index_path PASSED [ 79%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_file_not_found_error PASSED [ 80%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_validation_error PASSED [ 80%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_ingest_document_unexpected_error PASSED [ 81%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_complete_workflow_success PASSED [ 81%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_system_not_ready PASSED [ 82%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_validation_error PASSED [ 82%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_unexpected_error PASSED [ 83%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_process_query_no_context_retrieved PASSED [ 83%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_with_embeddings PASSED [ 84%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_empty_store PASSED [ 84%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_validate_system_ready_error_handling PASSED [ 85%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_with_provided_path PASSED [ 85%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_with_default_path PASSED [ 86%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_no_path_provided PASSED [ 86%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_file_not_found PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_load_index_unexpected_error PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_document_processor PASSED [ 87%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_text_chunker PASSED [ 88%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_embedding_generator PASSED [ 88%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_vector_store PASSED [ 89%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_query_handler PASSED [ 89%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_context_retriever PASSED [ 90%]
+tests/unit/test_rag_orchestrator.py::TestRAGOrchestrator::test_error_propagation_from_answer_generator PASSED [ 90%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_with_default_parameters PASSED [ 91%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_shorter_than_chunk_size PASSED [ 91%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_text_with_exact_chunk_size PASSED [ 92%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_exact_1000_character_chunks PASSED [ 92%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_overlap PASSED [ 93%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_200_character_overlap PASSED [ 93%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_sentence_boundary_preservation PASSED [ 94%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_sentence_boundary_preservation_detailed PASSED [ 94%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_metadata_completeness PASSED [ 95%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_empty_text PASSED [ 95%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_text_with_no_sentence_boundaries PASSED [ 96%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_no_sentence_boundary_handling PASSED [ 96%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_complete PASSED [ 97%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_with_overlap PASSED [ 97%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_empty_text PASSED [ 98%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_validate_chunk_coverage_missing_chunks PASSED [ 98%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_with_newlines PASSED [ 99%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_chunk_indices_sequential PASSED [ 99%]
+tests/unit/test_text_chunker.py::TestTextChunker::test_custom_chunk_size_and_overlap PASSED [100%]
+
+=================================== FAILURES ===================================
+_ TestAdapterReplaceabilityProperties.test_property_16_adapter_replaceability __
+tests/property/test_properties_adapters.py:144: in test_property_16_adapter_replaceability
+    mock_content=st.text(min_size=100, max_size=2000),
+           ^^^^^^^
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_16_adapter_replaceability. 459 of 459 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+_ TestDocumentProcessorProperties.test_property_1_pdf_text_extraction_completeness _
+tests/property/test_properties_document.py:23: in test_property_1_pdf_text_extraction_completeness
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_text_extraction_completeness. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+__ TestDocumentProcessorProperties.test_property_1_pdf_extraction_consistency __
+tests/property/test_properties_document.py:96: in test_property_1_pdf_extraction_consistency
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_extraction_consistency. 4 of 4 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+__ TestDocumentProcessorProperties.test_property_1_pdf_structure_preservation __
+tests/property/test_properties_document.py:142: in test_property_1_pdf_structure_preservation
+    @settings(
+               
+E   hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_structure_preservation. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+___________ TestDocumentProcessor.test_validate_file_path_valid_pdf ____________
+tests/unit/test_document_processor.py:63: in test_validate_file_path_valid_pdf
+    assert result.is_valid
+E   AssertionError: assert False
+E    +  where False = ValidationResult(is_valid=False, error_message='Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd').is_valid
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd
+____________ TestDocumentProcessor.test_load_document_corrupted_pdf ____________
+tests/unit/test_document_processor.py:85: in test_load_document_corrupted_pdf
+    processor.load_document(str(test_file))
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+____________ TestDocumentProcessor.test_load_document_empty_content ____________
+tests/unit/test_document_processor.py:99: in test_load_document_empty_content
+    processor.load_document(str(test_file))
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+_______________ TestDocumentProcessor.test_load_document_success _______________
+tests/unit/test_document_processor.py:114: in test_load_document_success
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+______ TestDocumentProcessor.test_load_document_preserves_text_structure _______
+tests/unit/test_document_processor.py:144: in test_load_document_preserves_text_structure
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+________ TestDocumentProcessor.test_load_document_page_count_estimation ________
+tests/unit/test_document_processor.py:160: in test_load_document_page_count_estimation
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+_________ TestDocumentProcessor.test_load_document_minimum_page_count __________
+tests/unit/test_document_processor.py:175: in test_load_document_minimum_page_count
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+______ TestDocumentProcessor.test_document_processor_uses_injected_loader ______
+tests/unit/test_document_processor.py:189: in test_document_processor_uses_injected_loader
+    result = processor.load_document(str(test_file))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+core/document_processor.py:99: in load_document
+    raise FileNotFoundError(validation_result.error_message)
+E   FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+------------------------------ Captured log call -------------------------------
+ERROR    core.document_processor:document_processor.py:60 File path validation failed: not a PDF file: /tmp/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+ERROR    core.document_processor:document_processor.py:98 Document loading failed: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+=============================== warnings summary ===============================
+../../../../../opt/hostedtoolcache/Python/3.13.12/x64/lib/python3.13/site-packages/_pytest/config/__init__.py:1428
+  /opt/hostedtoolcache/Python/3.13.12/x64/lib/python3.13/site-packages/_pytest/config/__init__.py:1428: PytestConfigWarning: Unknown config option: hypothesis_profile
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.12-final-0 _______________
+
+Name                                       Stmts   Miss   Cover   Missing
+-------------------------------------------------------------------------
+adapters/__init__.py                           6      0 100.00%
+adapters/cli_adapter.py                      142     18  87.32%   106-107, 114-116, 162-166, 277-281, 310-312, 329-331
+adapters/faiss_adapter.py                     75      2  97.33%   177-178
+adapters/langchain_adapter.py                 38      3  92.11%   58-60
+adapters/ollama_adapter.py                    35     27  22.86%   36-52, 69-101, 110
+adapters/pypdf_adapter.py                     55      8  85.45%   60-65, 87-88, 113, 121-123
+adapters/sentence_transformer_adapter.py      47     10  78.72%   63, 70-72, 94-95, 109, 117-121
+core/__init__.py                               6      0 100.00%
+core/__version__.py                            5      5   0.00%   3-7
+core/answer_generator.py                      65      4  93.85%   81-83, 198
+core/config.py                                20      0 100.00%
+core/context_retriever.py                     28      0 100.00%
+core/document_processor.py                    58     15  74.14%   54-55, 67-68, 108-113, 136-149
+core/embedding_generator.py                   47      0 100.00%
+core/factory.py                              102     14  86.27%   53, 60, 69, 78, 168-169, 217-220, 249-252
+core/models.py                                56      0 100.00%
+core/query_handler.py                         32      0 100.00%
+core/rag_orchestrator.py                     137      7  94.89%   69-76, 113
+core/text_chunker.py                          96     14  85.42%   80-81, 103, 222-235, 242
+ports/__init__.py                              3      0 100.00%
+ports/inbound.py                               3      0 100.00%
+ports/outbound.py                              7      0 100.00%
+-------------------------------------------------------------------------
+TOTAL                                       1063    127  88.05%
+Coverage HTML written to dir htmlcov
+Coverage XML written to file coverage.xml
+=========================== short test summary info ============================
+FAILED tests/property/test_properties_adapters.py::TestAdapterReplaceabilityProperties::test_property_16_adapter_replaceability - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_16_adapter_replaceability. 459 of 459 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_text_extraction_completeness - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_text_extraction_completeness. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_extraction_consistency - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_extraction_consistency. 4 of 4 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/property/test_properties_document.py::TestDocumentProcessorProperties::test_property_1_pdf_structure_preservation - hypothesis.errors.Unsatisfiable: Unable to satisfy assumptions of test_property_1_pdf_structure_preservation. 2 of 2 examples failed a .filter() or assume() condition. Try making your filters or assumes less strict, or rewrite using strategy parameters: st.integers().filter(lambda x: x > 0) fails less often (that is, never) when rewritten as st.integers(min_value=1).
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_validate_file_path_valid_pdf - AssertionError: assert False
+ +  where False = ValidationResult(is_valid=False, error_message='Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_validate_file_path_valid_0/test.pd').is_valid
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_corrupted_pdf - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_corrupted_p0/corrupted.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_empty_content - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_empty_conte0/empty.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_success - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_success0/valid.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_preserves_text_structure - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_preserves_t0/structured.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_page_count_estimation - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_page_count_0/multipage.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_load_document_minimum_page_count - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_load_document_minimum_pag0/short.pd
+FAILED tests/unit/test_document_processor.py::TestDocumentProcessor::test_document_processor_uses_injected_loader - FileNotFoundError: Error: File is not a PDF: /tmp/pytest-of-runner/pytest-0/test_document_processor_uses_i0/test.pd
+============ 12 failed, 190 passed, 6 skipped, 4 warnings in 57.63s ============
+Error: Process completed with exit code 1.
