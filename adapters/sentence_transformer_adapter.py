@@ -127,4 +127,4 @@ class SentenceTransformerAdapter(EmbeddingModelPort):
         Returns:
             Integer representing embedding dimension (384 for all-MiniLM-L6-v2)
         """
-        return self._embedding_dimension
+        return int(self._embedding_dimension)

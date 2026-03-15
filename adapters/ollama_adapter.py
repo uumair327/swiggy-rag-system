@@ -107,4 +107,4 @@ class OllamaAdapter(LLMPort):
         Returns:
             String identifier of the model
         """
-        return f"ollama/{self._model_name}"
+        return str(f"ollama/{self._model_name}")

@@ -1,28 +1,28 @@
 # PDF Processing
-pypdf==4.0.1
+pypdf>=6.8.0
 
 # Embeddings
-sentence-transformers==2.3.1
+sentence-transformers>=2.3.1
 
 # Vector Store
-faiss-cpu==1.13.2
+faiss-cpu>=1.13.2
 
-# LLM Framework
-langchain==0.1.6
-langchain-openai==0.0.5
-openai==1.10.0
+# LLM Framework (OpenAI - optional)
+langchain>=0.3.0
+langchain-openai>=0.2.0
+openai>=1.50.0
 
 # Ollama Support
-requests==2.31.0
+requests>=2.32.4
 
 # Type stubs for type checking
-types-requests==2.31.0.20240125
+types-requests>=2.32.0
 
 # Testing
-pytest==8.0.0
-pytest-mock==3.12.0
-pytest-cov==4.1.0
-hypothesis==6.98.3
+pytest>=8.0.0
+pytest-mock>=3.12.0
+pytest-cov>=4.1.0
+hypothesis>=6.98.3
 
 # Utilities
-numpy==1.26.3
+numpy>=1.26.3

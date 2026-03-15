@@ -197,4 +197,4 @@ class FAISSAdapter(VectorStorePort):
         Returns:
             Integer count of embeddings in the index
         """
-        return self.index.ntotal
+        return int(self.index.ntotal)

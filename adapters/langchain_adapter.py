@@ -109,4 +109,4 @@ class LangChainLLMAdapter(LLMPort):
         Returns:
             String identifier of the model
         """
-        return self._model_name
+        return str(self._model_name)
