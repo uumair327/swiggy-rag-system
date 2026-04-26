@@ -13,7 +13,7 @@ langchain-openai>=0.2.0
 openai>=1.50.0
 
 # Ollama Support
-requests>=2.32.4
+requests>=2.33.1
 
 # Web API (for GitHub Pages UI backend)
 fastapi>=0.116.1
