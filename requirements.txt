@@ -29,4 +29,4 @@ pytest-cov>=4.1.0
 hypothesis>=6.98.3
 
 # Utilities
-numpy>=1.26.3
+numpy>=2.4.4
